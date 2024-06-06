@@ -1,0 +1,50 @@
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore compiled object files
+*.o
+*.so
+*.dll
+*.exe
+
+# Ignore backup files
+*~
+
+# Ignore Bash script specific files
+*.bak
+*.sh.swp
+*.sh~ 
+*.sh.bak
+*.sh.save
+*.sh.swp
+*.sh.swo
+
+# Ignore Lua script specific files
+*.luac
+
+# Ignore node_modules if you're using JavaScript for some parts
+node_modules/
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore Mac OS generated files
+*.DS_Store
+
+# Ignore other temporary or system files
+*.pyc
+*.pyo
+__pycache__/
+*.class
+
