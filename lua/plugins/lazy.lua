@@ -42,6 +42,9 @@ local plugins = {
       vim.o.timeoutlen = 300
     end,
     opts = {}
+  },
+  {
+    "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
   }
 }
 
