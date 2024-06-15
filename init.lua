@@ -1,6 +1,8 @@
 require("options")
 require("keymaps")
 require("plugins.lazy")
+require("plugins.theme")
+require("plugins.line")
 require("plugins.telescope")
 require("plugins.tree")
 require("plugins.lsp")

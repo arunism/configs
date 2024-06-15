@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = {
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim' }
@@ -33,6 +34,10 @@ local plugins = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" }
   },
   {
     "folke/which-key.nvim",
