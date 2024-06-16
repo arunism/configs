@@ -15,8 +15,8 @@ fi
 # Find all Bash scripts in the directory and make them executable
 find "$directory" -type f -name "*.sh" -exec chmod +x {} \;
 
+echo "Executable permissions granted to all Bash scripts in '$directory'."
+
 # Execute each Bash script found in the directory
 find "$directory" -type f -name "*.sh" -exec {} \;
-
-echo "Executable permissions granted to all Bash scripts in '$directory'."
 
