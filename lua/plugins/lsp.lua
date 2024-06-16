@@ -7,9 +7,10 @@ require("mason-lspconfig").setup({
 
 local keymap = vim.keymap.set
 local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.lua_ls.setup({})
-lspconfig.pylsp.setup({})
+lspconfig.lua_ls.setup({ capabilities = capabilities, })
+lspconfig.pylsp.setup({ capabilities = capabilities, })
 
 keymap("n", "<leader>hd", vim.lsp.buf.hover, {})
 keymap({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, opts)

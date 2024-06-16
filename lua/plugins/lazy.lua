@@ -13,14 +13,19 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = {
-  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, },
+  -- Color-Scheme
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {},
+  },
+
+  -- Fuzzy Finder
+  {
+     "nvim-telescope/telescope-ui-select.nvim",
+    "nvim-telescope/telescope.nvim", tag = "0.1.6",
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
-  {
-    "nvim-telescope/telescope-ui-select.nvim"
-  },
+
+  -- File System Manager
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -30,24 +35,39 @@ local plugins = {
       "MunifTanjim/nui.nvim",
     }
   },
+
+  -- LSP and Corresponding Requirements
   {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   },
+
+  -- Auto Complete
+  {
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "L3MON4D3/LuaSnip",
+  },
+
+  -- Status-Line Manager
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" }
   },
+
+  -- Auto Completion of the Shortcut Commandline Keys
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     init = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 300
+      vim.o.timeoutlen = 3
     end,
     opts = {}
   },
+
+  -- Parser for Different Languages
   {
     "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
   }

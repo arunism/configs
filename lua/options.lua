@@ -18,4 +18,8 @@ opt.hidden = true
 opt.showcmd = true
 opt.showmatch = true
 
+-- "which-key" Package
+-- opt.timeout = true
+-- opt.timeoutlen = 300
+
 vim.g.mapleader = " "
