@@ -3,8 +3,8 @@
 
 # Check if running as root
 if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root" 
-    exit 1
+  echo "This script must be run as root" 
+  exit 1
 fi
 
 # Update package lists
@@ -22,8 +22,8 @@ apt autoremove --purge -y
 # Ask user if they want to reboot
 read -p "Do you want to reboot the system now? (y/n): " reboot_answer
 if [[ "$reboot_answer" =~ ^[Yy]$ ]]; then
-    reboot
+  reboot
 else
-    echo "Kernel update completed. Remember to reboot your system later for changes to take effect."
+  echo "Kernel update completed. Remember to reboot your system later for changes to take effect."
 fi
 
