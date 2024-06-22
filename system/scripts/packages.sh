@@ -39,6 +39,40 @@ install_xclip() {
 }
 
 
+# Install Postman
+install_postman() {
+  echo "Installing Postman..."
+
+  POSTMAN_URL="https://dl.pstmn.io/download/latest/linux64"
+  INSTALL_DIR="/opt/postman"
+  TEMP_ARCHIVE="/tmp/postman.tar.gz"
+
+  # Download the latest version of Postman using curl
+  echo "Downloading Postman..."
+  curl -L -o "$TEMP_ARCHIVE" "$POSTMAN_URL"
+
+  # Extract Postman archive
+  echo "Extracting Postman archive..."
+  sudo mkdir -p "$INSTALL_DIR"
+  sudo tar -xzf "$TEMP_ARCHIVE" -C "$INSTALL_DIR"
+
+  # Create symlink
+  sudo ln -sf "$INSTALL_DIR/Postman/Postman" /usr/bin/postman
+
+  # Create desktop entry
+  echo "[Desktop Entry]
+  Version=1.0
+  Name=Postman
+  Exec=postman
+  Icon=$INSTALL_DIR/Postman/app/resources/app/assets/icon.png
+  Terminal=false
+  Type=Application
+  Categories=Development;" > ~/.local/share/applications/postman.desktop
+
+  echo "Postman installation completed!"
+}
+
+
 
 
 # List of all the packages
@@ -48,6 +82,7 @@ packages=(
     "python-poetry,install_poetry"
     "neovim,install_neovim"
     "xclip,install_xclip"
+    "postman, install_postman"
 )
 
 # Ask user if they want to install all packages
