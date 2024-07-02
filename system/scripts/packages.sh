@@ -29,6 +29,19 @@ install_poetry() {
   echo "Poetry installation completed!"
 }
 
+# Function to install pyenv
+install_pyenv() {
+  echo "Installing pyenv..."
+  
+  apt-get install libssl-dev
+  curl https://pyenv.run | bash
+  echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
+  echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+  echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+  echo "Pyenv installation completed!"
+}
+
 # Function to install neovim
 install_neovim() {
   echo "Installing neovim..."
@@ -88,6 +101,7 @@ packages=(
   "python3-pip,install_pip"
   "python3-venv,install_venv"
   "python-poetry,install_poetry"
+  "pyenv,install_pyenv"
   "neovim,install_neovim"
   "xclip,install_xclip"
   "postman, install_postman"
