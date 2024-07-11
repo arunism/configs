@@ -70,6 +70,11 @@ local plugins = {
   -- Parser for Different Languages
   {
     "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
+  },
+
+  -- Git Controls
+  {
+    "lewis6991/gitsigns.nvim"
   }
 }
 
