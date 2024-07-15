@@ -96,6 +96,21 @@ install_postman() {
 }
 
 
+# Install Obsidian
+install_obsidian() {
+  echo "Installing Obsidian..."
+
+  latest_release=$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest)
+  download_url=$(echo "$latest_release" | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
+  version_name=$(echo "$latest_release" | grep tag_name | cut -d '"' -f 4)
+  wget "$download_url" -O "obsidian-${version_name}-amd64.deb"
+  sudo dpkg -i "obsidian-${version_name}-amd64.deb"
+  rm "obsidian-${version_name}-amd64.deb"
+  
+  echo "Obsidian ${version_name} has been installed successfully."
+}
+
+
 # List of all the packages
 packages=(
   "python3-pip,install_pip"
@@ -105,6 +120,7 @@ packages=(
   "neovim,install_neovim"
   "xclip,install_xclip"
   "postman, install_postman"
+  "obsidian, install_obsidian"
 )
 
 # Ask user if they want to install all packages
