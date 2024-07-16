@@ -62,6 +62,28 @@ install_xclip() {
 }
 
 
+install_docker() {
+  echo "Installing Docker..."
+
+  for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do apt-get remove $pkg; done
+
+  # Add Docker's official GPG key:
+  apt-get update
+  apt-get install ca-certificates curl
+  install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  chmod a+r /etc/apt/keyrings/docker.asc
+  
+  # Add the repository to Apt sources:
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    tee /etc/apt/sources.list.d/docker.list > /dev/null
+  apt-get update
+
+  apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+}
+
 # Install Postman
 install_postman() {
   echo "Installing Postman..."
@@ -76,11 +98,11 @@ install_postman() {
 
   # Extract Postman archive
   echo "Extracting Postman archive..."
-  sudo mkdir -p "$INSTALL_DIR"
-  sudo tar -xzf "$TEMP_ARCHIVE" -C "$INSTALL_DIR"
+  mkdir -p "$INSTALL_DIR"
+  tar -xzf "$TEMP_ARCHIVE" -C "$INSTALL_DIR"
 
   # Create symlink
-  sudo ln -sf "$INSTALL_DIR/Postman/Postman" /usr/bin/postman
+  ln -sf "$INSTALL_DIR/Postman/Postman" /usr/bin/postman
 
   # Create desktop entry
   echo "[Desktop Entry]
@@ -104,7 +126,7 @@ install_obsidian() {
   download_url=$(echo "$latest_release" | grep browser_download_url | grep amd64.deb | cut -d '"' -f 4)
   version_name=$(echo "$latest_release" | grep tag_name | cut -d '"' -f 4)
   wget "$download_url" -O "obsidian-${version_name}-amd64.deb"
-  sudo dpkg -i "obsidian-${version_name}-amd64.deb"
+  dpkg -i "obsidian-${version_name}-amd64.deb"
   rm "obsidian-${version_name}-amd64.deb"
   
   echo "Obsidian ${version_name} has been installed successfully."
