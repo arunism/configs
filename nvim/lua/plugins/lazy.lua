@@ -75,7 +75,10 @@ local plugins = {
   -- Git Controls
   {
     "lewis6991/gitsigns.nvim"
-  }
+  },
+
+  -- BufferLine
+  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 }
 
 local opts = {}
