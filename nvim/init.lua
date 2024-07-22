@@ -1,11 +1,2 @@
-require("options")
-require("keymaps")
-require("plugins.lazy")
-require("plugins.theme")
-require("plugins.line")
-require("plugins.telescope")
-require("plugins.tree")
-require("plugins.lsp")
-require("plugins.complete")
-require("plugins.git")
-require("plugins.bufline")
+vim.opt.number = true
+require("core")
