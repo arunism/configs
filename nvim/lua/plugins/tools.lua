@@ -1,13 +1,10 @@
-local tool = {}
+local tools = {}
 
-
-----------------------------------------------------------------------
---                            Telescope                             --
-----------------------------------------------------------------------
-tool["nvim-telescope/telescope.nvim"] = {
+-- TELESCOPE
+tools["nvim-telescope/telescope.nvim"] = {
 	lazy = true,
 	cmd = "Telescope",
-	config = require("tool.telescope"),
+	config = require("configs.tools.telescope"),
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-tree/nvim-web-devicons" },
@@ -18,12 +15,12 @@ tool["nvim-telescope/telescope.nvim"] = {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
 			"FabianWirth/search.nvim",
-			config = require("tool.search"),
+			config = require("configs.tools.search"),
 		},
 		{
 			"ahmedkhalf/project.nvim",
 			event = { "CursorHold", "CursorHoldI" },
-			config = require("tool.project"),
+			config = require("configs.tools.project"),
 		},
 		{
 			"aaronhallaert/advanced-git-search.nvim",
@@ -36,3 +33,6 @@ tool["nvim-telescope/telescope.nvim"] = {
 		},
 	},
 }
+
+
+return tools

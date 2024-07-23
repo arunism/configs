@@ -1,4 +1,5 @@
 local ui = require("plugins.ui")
+local tools = require("plugins.tools")
 
 local plugins = {}
 
@@ -11,6 +12,7 @@ end
 
 
 extend(plugins, ui)
+extend(plugins, tools)
 
 
 return plugins
