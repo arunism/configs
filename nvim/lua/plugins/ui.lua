@@ -20,5 +20,24 @@ ui["lewis6991/gitsigns.nvim"] = {
 	config = require("configs.ui.gitsigns"),
 }
 
+ui["akinsho/bufferline.nvim"] = {
+	lazy = true,
+	event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	config = require("configs.ui.bufferline"),
+}
+
+ui["dstein64/nvim-scrollview"] = {
+	lazy = true,
+	event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	config = require("configs.ui.scrollview"),
+}
+
+ui["folke/todo-comments.nvim"] = {
+	lazy = true,
+	event = { "CursorHold", "CursorHoldI" },
+	config = require("configs.ui.todo"),
+	dependencies = { "nvim-lua/plenary.nvim" },
+}
+
 
 return ui

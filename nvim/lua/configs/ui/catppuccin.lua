@@ -115,10 +115,6 @@ return function()
 					-- For mason.nvim
 					MasonNormal = { link = "NormalFloat" },
 
-					-- For indent-blankline
-					IblIndent = { fg = cp.surface0 },
-					IblScope = { fg = cp.surface2, style = { "bold" } },
-
 					-- For nvim-cmp and wilder.nvim
 					Pmenu = { fg = cp.overlay2, bg = transparent_background and cp.none or cp.base },
 					PmenuBorder = { fg = cp.surface1, bg = transparent_background and cp.none or cp.base },
@@ -137,10 +133,6 @@ return function()
 					-- For nvim-tree
 					NvimTreeRootFolder = { fg = cp.pink },
 					NvimTreeIndentMarker = { fg = cp.surface2 },
-
-					-- For trouble.nvim
-					TroubleNormal = { bg = transparent_background and cp.none or cp.base },
-					TroubleNormalNC = { bg = transparent_background and cp.none or cp.base },
 
 					-- For telescope.nvim
 					TelescopeMatching = { fg = cp.lavender },
