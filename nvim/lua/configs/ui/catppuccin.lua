@@ -131,10 +131,6 @@ return function()
 						bg = transparent_background and cp.none or cp.mantle,
 					},
 
-					-- For fidget
-					FidgetTask = { bg = cp.none, fg = cp.surface2 },
-					FidgetTitle = { fg = cp.blue, style = { "bold" } },
-
 					-- For nvim-notify
 					NotifyBackground = { bg = cp.base },
 
@@ -151,23 +147,6 @@ return function()
 					TelescopeResultsDiffAdd = { fg = cp.green },
 					TelescopeResultsDiffChange = { fg = cp.yellow },
 					TelescopeResultsDiffDelete = { fg = cp.red },
-
-					-- For glance.nvim
-					GlanceWinBarFilename = { fg = cp.subtext1, style = { "bold" } },
-					GlanceWinBarFilepath = { fg = cp.subtext0, style = { "italic" } },
-					GlanceWinBarTitle = { fg = cp.teal, style = { "bold" } },
-					GlanceListCount = { fg = cp.lavender },
-					GlanceListFilepath = { link = "Comment" },
-					GlanceListFilename = { fg = cp.blue },
-					GlanceListMatch = { fg = cp.lavender, style = { "bold" } },
-					GlanceFoldIcon = { fg = cp.green },
-
-					-- For nvim-treehopper
-					TSNodeKey = {
-						fg = cp.peach,
-						bg = transparent_background and cp.none or cp.base,
-						style = { "bold", "underline" },
-					},
 
 					-- For treesitter
 					["@keyword.return"] = { fg = cp.pink, style = clear },
