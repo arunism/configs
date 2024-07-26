@@ -55,17 +55,17 @@ function lazy:load_lazy()
     },
     performance = {
       cache = {
-	enabled = true,
-	path = system.cache_dir .. "/lazy/cache",
-	disable_events = { "UIEnter", "BufReadPre" },  -- To cache all plugins, set this to `{}`, but NOT recommended
-	ttl = 3600 * 24 * 2,  -- Keep cached items for 2 days of inactivity
+      	enabled = true,
+      	path = system.cache_dir .. "/lazy/cache",
+      	disable_events = { "UIEnter", "BufReadPre" },  -- To cache all plugins, set this to `{}`, but NOT recommended
+      	ttl = 3600 * 24 * 2,  -- Keep cached items for 2 days of inactivity
       },
       reset_packpath = true,  -- reset the package path to improve startup time
       rtp = {
-	reset = true,  -- reset the runtime path to $VIMRUNTIME and the config directory
-	---@type string[]
-	paths = {}, -- add any custom paths here that you want to include in the rtp
-	disabled_plugins = {},
+	      reset = true,  -- reset the runtime path to $VIMRUNTIME and the config directory
+	      ---@type string[]
+	      paths = {}, -- add any custom paths here that you want to include in the rtp
+	      disabled_plugins = {},
       },
     },
   }

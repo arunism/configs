@@ -13,3 +13,7 @@ keymap("n", "<leader>fh", builtin.help_tags, {})
 keymap("n", "<C-b>", ":NvimTreeToggle<CR>", {})
 keymap("n", "<leader>nf", ":NvimTreeFindFile<CR>", {})
 keymap("n", "<leader>nr", ":NvimTreeRefresh<CR>", {})
+
+
+-- LSPCONFIG
+keymap("n", "<C-l>", vim.lsp.buf.hover, {})
