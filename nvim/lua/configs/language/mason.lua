@@ -46,7 +46,7 @@ return function()
   -- Define the configuration directly for MASON-LSPCONFIG
   local mason_lspconfig_configs = {
     ensure_installed = lang_servers,
-    automatic_installation = false,
+    automatic_installation = true,
   }
 
   -- Integrate all the configurations
