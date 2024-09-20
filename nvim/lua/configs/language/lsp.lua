@@ -2,7 +2,7 @@ return function()
   local lang_servers = require("core.settings").lang_servers
 
   -- Define the configuration directly
-  require("configs.language.mason")
+  require("configs.language.mason")()
 
   -- Integrate all the configurations
   lspconfig = require("lspconfig")
