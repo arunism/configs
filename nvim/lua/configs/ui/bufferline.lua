@@ -1,5 +1,5 @@
 return function()
-  local icons = { ui = require("utils.icons").get("ui") }
+  -- local icons = { ui = require("utils.icons").get("ui") }
   local bufferline = require("bufferline")
 
   -- Define the configuration directly
