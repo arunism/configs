@@ -1,5 +1,6 @@
 return function()
   local lspconfig = require("lspconfig")
+  local settings = require("configs.language.settings")
   local lang_servers = require("core.settings").lang_servers
 
   -- Define the configuration directly
@@ -11,7 +12,14 @@ return function()
   )
 
   for _, ls in ipairs(lang_servers) do
-    lspconfig[ls].setup({ capabilities = capabilities })
+    local ls_config = { capabilities = capabilities }
+
+    -- Check if settings exist for the language server
+    if settings[ls] then
+      ls_config.settings = settings[ls]
+    end
+
+    lspconfig[ls].setup(ls_config)
   end
 
 end
