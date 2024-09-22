@@ -62,6 +62,14 @@ install_xclip() {
 }
 
 
+install_ripgrip() {
+  echo "Installing ripgrep..."
+  apt-get install ripgrep
+
+  echo "ripgrep installation completed!"
+}
+
+
 install_docker() {
   echo "Installing Docker..."
 
@@ -141,6 +149,7 @@ packages=(
   "pyenv,install_pyenv"
   "neovim,install_neovim"
   "xclip,install_xclip"
+  "ripgrip,install_ripgrip"
   "postman, install_postman"
   "obsidian, install_obsidian"
 )
