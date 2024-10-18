@@ -53,6 +53,17 @@ install_neovim() {
   echo "NeoVim installation completed!"
 }
 
+# Function to install nodejs along with npm
+install_nodejs() {
+  echo "Installing nodejs along with npm..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+  export NVM_DIR="$HOME/.nvm"
+
+  nvm install 20
+
+  echo "Nodejs installation completed!"
+}
+
 # Install xclip: A clipboard for Neovim
 install_xclip() {
   echo "Installing xclip..."
@@ -148,6 +159,7 @@ packages=(
   "python-poetry,install_poetry"
   "pyenv,install_pyenv"
   "neovim,install_neovim"
+  "nodejs,install_nodejs"
   "xclip,install_xclip"
   "ripgrip,install_ripgrip"
   "postman, install_postman"
