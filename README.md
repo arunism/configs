@@ -13,3 +13,7 @@ This repository contains configuration files and scripts for setting up a Linux 
 
 3. Execute the scripts as needed.
 
+## Add Fonts
+
+To add Nerd fonts you can download the Nerd Fonts of your choice from [here](https://github.com/ryanoasis/nerd-fonts), and move it inside the directory `~/.local/share/fonts/`.
+Then import it to terminal following the given menu `preferences > text > custom fonts > check it and choose your font`.
