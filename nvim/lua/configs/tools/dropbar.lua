@@ -36,7 +36,7 @@ return function()
 		icons = {
 			enable = true,
 			kinds = {
-				use_devicons = true,
+				use_devicon = true,
 				symbols = {
 					-- Type
 					Array = icons.type.Array,
