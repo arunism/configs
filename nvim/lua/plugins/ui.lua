@@ -39,5 +39,11 @@ ui["folke/todo-comments.nvim"] = {
 	dependencies = { "nvim-lua/plenary.nvim" },
 }
 
+ui["shellRaining/hlchunk.nvim"] = {
+  lazy = true,
+  event = { "BufReadPre", "BufNewFile" },
+  config = require("configs.ui.hlchunk"),
+}
+
 
 return ui
