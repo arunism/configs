@@ -60,4 +60,63 @@ tools["amitds1997/remote-nvim.nvim"] = {
    config = require("configs.tools.remote"),
 }
 
+-- Git Fugitive
+tools["tpope/vim-fugitive"] = {
+	lazy = true,
+	cmd = { "Git", "G" },
+}
+
+-- Copy Paste
+tools["ibhagwan/smartyank.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	config = require("configs.tools.smartyank"),
+}
+
+-- Run Snippets independent of the entire code block
+tools["michaelb/sniprun"] = {
+	lazy = true,
+	-- You need to cd to `~/.local/share/nvim/site/lazy/sniprun/` and execute `bash ./install.sh`,
+	-- if you encountered error about no executable sniprun found.
+	build = "bash ./install.sh",
+	cmd = { "SnipRun", "SnipReset", "SnipInfo" },
+	config = require("configs.tools.sniprun"),
+}
+
+-- Auto Suggestions
+tools["gelguy/wilder.nvim"] = {
+	lazy = true,
+	event = "CmdlineEnter",
+	dependencies = { "romgrk/fzy-lua-native" },
+	config = require("configs.tools.wilder"),
+}
+
+-- Trouble
+tools["folke/trouble.nvim"] = {
+	lazy = true,
+	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+	config = require("configs.tools.trouble"),
+}
+
+-- Debugger
+-- tools["mfussenegger/nvim-dap"] = {
+-- 	lazy = true,
+-- 	cmd = {
+-- 		"DapSetLogLevel",
+-- 		"DapShowLog",
+-- 		"DapContinue",
+-- 		"DapToggleBreakpoint",
+-- 		"DapToggleRepl",
+-- 		"DapStepOver",
+-- 		"DapStepInto",
+-- 		"DapStepOut",
+-- 		"DapTerminate",
+-- 	},
+-- 	config = require("configs.tools.dap"),
+-- 	dependencies = {
+-- 		"rcarriga/nvim-dap-ui",
+-- 		"jay-babu/mason-nvim-dap.nvim",
+-- 	},
+-- }
+
 return tools
