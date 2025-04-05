@@ -60,4 +60,17 @@ tools["amitds1997/remote-nvim.nvim"] = {
    config = require("configs.tools.remote"),
 }
 
+-- Git Fugitive
+tools["tpope/vim-fugitive"] = {
+	lazy = true,
+	cmd = { "Git", "G" },
+}
+
+-- Copy Paste
+tools["ibhagwan/smartyank.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	config = require("configs.tools.smartyank"),
+}
+
 return tools
