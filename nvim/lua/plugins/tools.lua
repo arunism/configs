@@ -83,4 +83,32 @@ tools["michaelb/sniprun"] = {
 	config = require("configs.tools.sniprun"),
 }
 
+-- Trouble
+tools["folke/trouble.nvim"] = {
+	lazy = true,
+	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+	config = require("configs.tools.trouble"),
+}
+
+-- Debugger
+-- tools["mfussenegger/nvim-dap"] = {
+-- 	lazy = true,
+-- 	cmd = {
+-- 		"DapSetLogLevel",
+-- 		"DapShowLog",
+-- 		"DapContinue",
+-- 		"DapToggleBreakpoint",
+-- 		"DapToggleRepl",
+-- 		"DapStepOver",
+-- 		"DapStepInto",
+-- 		"DapStepOut",
+-- 		"DapTerminate",
+-- 	},
+-- 	config = require("configs.tools.dap"),
+-- 	dependencies = {
+-- 		"rcarriga/nvim-dap-ui",
+-- 		"jay-babu/mason-nvim-dap.nvim",
+-- 	},
+-- }
+
 return tools
