@@ -83,6 +83,14 @@ tools["michaelb/sniprun"] = {
 	config = require("configs.tools.sniprun"),
 }
 
+-- Auto Command Suggestions
+tools["gelguy/wilder.nvim"] = {
+	lazy = true,
+	event = "CmdlineEnter",
+	dependencies = { "romgrk/fzy-lua-native" },
+	config = require("configs.tools.wilder"),
+}
+
 -- Trouble
 tools["folke/trouble.nvim"] = {
 	lazy = true,
