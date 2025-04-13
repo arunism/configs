@@ -83,7 +83,7 @@ tools["michaelb/sniprun"] = {
 	config = require("configs.tools.sniprun"),
 }
 
--- Auto Command Suggestions
+-- Auto Suggestions
 tools["gelguy/wilder.nvim"] = {
 	lazy = true,
 	event = "CmdlineEnter",

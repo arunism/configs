@@ -45,11 +45,11 @@ ui["shellRaining/hlchunk.nvim"] = {
   config = require("configs.ui.hlchunk"),
 }
 
-ui["folke/edgy.nvim"] = {
-	lazy = true,
-	event = { "BufReadPre", "BufAdd", "BufNewFile" },
-	config = require("configs.ui.edgy"),
-}
+-- ui["folke/edgy.nvim"] = {
+-- 	lazy = true,
+-- 	event = { "BufReadPre", "BufAdd", "BufNewFile" },
+-- 	config = require("configs.ui.edgy"),
+-- }
 
 ui["j-hui/fidget.nvim"] = {
 	lazy = true,
