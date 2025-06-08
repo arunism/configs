@@ -57,5 +57,9 @@ ui["j-hui/fidget.nvim"] = {
 	config = require("configs.ui.fidget"),
 }
 
+ui["sphamba/smear-cursor.nvim"] = {
+  config = require("configs.ui.cursor")
+}
+
 
 return ui

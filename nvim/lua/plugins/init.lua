@@ -12,9 +12,9 @@ local function extend(target, source)
 end
 
 
-extend(plugins, ui)
-extend(plugins, tools)
 extend(plugins, language)
+extend(plugins, tools)
+extend(plugins, ui)
 
 
 return plugins
