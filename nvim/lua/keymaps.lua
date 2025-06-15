@@ -17,3 +17,7 @@ keymap("n", "<leader>nr", ":NvimTreeRefresh<CR>", {})
 
 -- LSPCONFIG
 keymap("n", "<C-l>", vim.lsp.buf.hover, {})
+
+
+-- LAZYGIT
+-- keymap("n", "<leader>lg", "<cmd>LazyGit<cr>", {})
