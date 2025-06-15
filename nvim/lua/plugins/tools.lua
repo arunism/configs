@@ -114,24 +114,27 @@ tools["folke/trouble.nvim"] = {
 -- }
 
 -- Debugger
--- tools["mfussenegger/nvim-dap"] = {
--- 	lazy = true,
--- 	cmd = {
--- 		"DapSetLogLevel",
--- 		"DapShowLog",
--- 		"DapContinue",
--- 		"DapToggleBreakpoint",
--- 		"DapToggleRepl",
--- 		"DapStepOver",
--- 		"DapStepInto",
--- 		"DapStepOut",
--- 		"DapTerminate",
--- 	},
--- 	config = require("configs.tools.dap"),
--- 	dependencies = {
--- 		"rcarriga/nvim-dap-ui",
--- 		"jay-babu/mason-nvim-dap.nvim",
--- 	},
--- }
+tools["mfussenegger/nvim-dap"] = {
+	lazy = true,
+	cmd = {
+		"DapSetLogLevel",
+		"DapShowLog",
+		"DapContinue",
+		"DapToggleBreakpoint",
+		"DapToggleRepl",
+		"DapStepOver",
+		"DapStepInto",
+		"DapStepOut",
+		"DapTerminate",
+	},
+	config = require("configs.tools.debug"),
+	dependencies = {
+		"rcarriga/nvim-dap-ui",
+    "nvim-neotest/nvim-nio",
+		"jay-babu/mason-nvim-dap.nvim",
+    "mfussenegger/nvim-dap-python",
+    "theHamsta/nvim-dap-virtual-text",
+	},
+}
 
 return tools

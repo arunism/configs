@@ -21,3 +21,9 @@ keymap("n", "<C-l>", vim.lsp.buf.hover, {})
 
 -- LAZYGIT
 -- keymap("n", "<leader>lg", "<cmd>LazyGit<cr>", {})
+
+
+-- Debugger
+local dap = require("dap")
+keymap("n", "<leader>dt", dap.toggle_breakpoint, {})
+keymap("n", "<leader>dc", dap.continue, {})
