@@ -10,7 +10,7 @@ keymap("n", "<leader>fh", builtin.help_tags, {})
 
 
 -- NVIM-TREE
-keymap("n", "<C-b>", ":NvimTreeToggle<CR>", {})
+keymap("n", "<C-s>", ":NvimTreeToggle<CR>", {})
 keymap("n", "<leader>nf", ":NvimTreeFindFile<CR>", {})
 keymap("n", "<leader>nr", ":NvimTreeRefresh<CR>", {})
 
