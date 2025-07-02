@@ -1,0 +1,699 @@
+# Exclude commonly ignored files and directories
+exclude: |
+  (?x)^(
+    \.git/.*|
+    \.tox/.*|
+    \.venv/.*|
+    venv/.*|
+    __pycache__/.*|
+    \.pytest_cache/.*|
+    \.mypy_cache/.*|
+    \.ruff_cache/.*|
+    build/.*|
+    dist/.*|
+    \.egg-info/.*|
+    node_modules/.*|
+    migrations/.*|
+    static/.*|
+    media/.*
+  )$
+
+# Fail fast - stop on first failure for faster feedback
+fail_fast: false
+
+# Minimum pre-commit version required
+minimum_pre_commit_version: "3.5.0"
+
+# Global configuration for all repositories
+default_install_hook_types: [pre-commit, pre-push, commit-msg, pre-merge-commit]
+default_stages: [pre-commit]
+
+repos:
+  # ==========================================
+  # CORE PRE-COMMIT HOOKS
+  # ==========================================
+  # Standard hooks for file validation and basic checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # File size and content validation
+      - id: check-added-large-files
+        name: "🚫 Check for Large Files"
+        description: "Prevent accidentally committing large files that could bloat repository"
+        entry: check-added-large-files
+        args: [--maxkb=500, --enforce-all]
+        stages: [pre-commit, pre-push]
+
+      - id: check-byte-order-marker
+        name: "🔍 Check Byte Order Marker"
+        description: "Detect UTF-8 byte order markers which can cause issues"
+        entry: check-byte-order-marker
+
+      - id: check-case-conflict
+        name: "⚠️  Check Case Conflicts"
+        description: "Prevent case-insensitive filename conflicts across different filesystems"
+        entry: check-case-conflict
+
+      - id: check-docstring-first
+        name: "📝 Check Docstring First"
+        description: "Ensure docstrings appear before code in Python files"
+        entry: check-docstring-first
+        types: [python]
+
+      - id: check-executables-have-shebangs
+        name: "⚡ Check Executable Shebangs"
+        description: "Ensure executable files have proper shebang lines"
+        entry: check-executables-have-shebangs
+
+      - id: check-shebang-scripts-are-executable
+        name: "🔧 Check Shebang Executability"
+        description: "Ensure files with shebangs are marked as executable"
+        entry: check-shebang-scripts-are-executable
+
+      # Python-specific validation
+      - id: check-ast
+        name: "🐍 Validate Python AST"
+        description: "Verify Python files have valid syntax and can be parsed"
+        entry: check-ast
+        types: [python]
+
+      - id: check-builtin-literals
+        name: "🔒 Check Builtin Literals"
+        description: "Prevent accidental use of mutable default arguments"
+        entry: check-builtin-literals
+        types: [python]
+
+      - id: name-tests-test
+        name: "🧪 Test File Naming"
+        description: "Ensure test files follow proper naming conventions"
+        entry: name-tests-test
+        args: [--pytest-test-first]
+        files: (^|/)tests/.+\.py$
+
+      - id: debug-statements
+        name: "🐛 Debug Statement Detection"
+        description: "Detect debugger imports, breakpoints, and print statements"
+        entry: debug-statement-hook
+        types: [python]
+
+      # Merge conflict and version control
+      - id: check-merge-conflict
+        name: "🔀 Check Merge Conflicts"
+        description: "Detect unresolved merge conflict markers"
+        entry: check-merge-conflict
+        types: [text]
+
+      - id: check-vcs-permalinks
+        name: "🔗 Check VCS Permalinks"
+        description: "Ensure VCS URLs use permanent links instead of branch references"
+        entry: check-vcs-permalinks
+
+      - id: no-commit-to-branch
+        name: "🚨 Protect Main Branches"
+        description: "Prevent direct commits to protected branches"
+        entry: no-commit-to-branch
+        args: [
+          --branch=main,
+          --branch=master,
+          --branch=develop,
+          --branch=release,
+          --pattern=release/.*,
+          --pattern=hotfix/.*
+        ]
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit, pre-push]
+
+      # File formatting and cleanup
+      - id: end-of-file-fixer
+        name: "📄 Fix End of Files"
+        description: "Ensure files end with exactly one newline character"
+        entry: end-of-file-fixer
+        types: [text]
+        exclude: |
+          (?x)^(
+            .*\.py$|
+            .*\.min\.(js|css)$|
+            .*\.svg$|
+            .*\.ico$
+          )$
+        stages: [pre-commit, pre-push, manual]
+
+      - id: fix-byte-order-marker
+        name: "🔧 Fix Byte Order Marker"
+        description: "Remove UTF-8 byte order markers"
+        entry: fix-byte-order-marker
+
+      - id: mixed-line-ending
+        name: "📝 Standardize Line Endings"
+        description: "Ensure consistent line endings (Unix LF)"
+        entry: mixed-line-ending
+        args: [--fix=lf]
+        types: [text]
+
+      - id: trailing-whitespace
+        name: "✂️  Trim Trailing Whitespace"
+        description: "Remove unnecessary trailing whitespace"
+        entry: trailing-whitespace-fixer
+        args: [--markdown-linebreak-ext=md]
+        types: [text]
+        stages: [pre-commit, pre-push, manual]
+
+      # Configuration file validation
+      - id: check-yaml
+        name: "📋 Validate YAML Syntax"
+        description: "Check YAML files for syntax errors and formatting"
+        entry: check-yaml
+        args: [--unsafe, --allow-multiple-documents]
+        types: [yaml]
+
+      - id: check-json
+        name: "📊 Validate JSON Syntax"
+        description: "Check JSON files for syntax errors and formatting"
+        entry: check-json
+        types: [json]
+
+      - id: check-toml
+        name: "⚙️  Validate TOML Syntax"
+        description: "Check TOML files for syntax errors and formatting"
+        entry: check-toml
+        types: [toml]
+
+      - id: check-xml
+        name: "🏷️  Validate XML Syntax"
+        description: "Check XML files for syntax errors"
+        entry: check-xml
+        types: [xml]
+
+      # Security checks
+      - id: detect-private-key
+        name: "🔐 Detect Private Keys"
+        description: "Prevent accidental commits of private keys and certificates"
+        entry: detect-private-key
+        types: [text]
+
+      - id: detect-aws-credentials
+        name: "☁️  Detect AWS Credentials"
+        description: "Prevent accidental commits of AWS credentials"
+        entry: detect-aws-credentials
+        types: [text]
+
+      # Additional file checks
+      - id: fix-encoding-pragma
+        name: "🔤 Fix Encoding Pragma"
+        description: "Remove or fix Python encoding pragmas"
+        entry: fix-encoding-pragma
+        args: [--remove]
+        types: [python]
+
+      - id: requirements-txt-fixer
+        name: "📦 Fix Requirements.txt"
+        description: "Sort and format requirements.txt files"
+        entry: requirements-txt-fixer
+        files: requirements.*\.txt$
+
+      - id: sort-simple-yaml
+        name: "📑 Sort Simple YAML"
+        description: "Sort simple YAML files alphabetically"
+        entry: sort-simple-yaml
+        files: ^(\.github/.*\.ya?ml|\.pre-commit-.*\.ya?ml)$
+
+  # ==========================================
+  # UV PACKAGE MANAGER INTEGRATION
+  # ==========================================
+  # Modern Python package manager for dependency management
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.7.15
+    hooks:
+      - id: uv-lock
+        name: "📋 UV Lock Dependencies"
+        description: "Ensure uv.lock is up-to-date with pyproject.toml changes"
+        stages: [pre-commit, pre-push]
+
+      - id: uv-export
+        name: "📤 UV Export Requirements"
+        description: "Export locked dependencies to requirements.txt"
+        args: [--output-file, requirements.txt, --no-hashes]
+        stages: [pre-commit]
+
+  # ==========================================
+  # RUFF - FAST PYTHON LINTER & FORMATTER
+  # ==========================================
+  # Ultra-fast Python linter and formatter written in Rust
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.0
+    hooks:
+      - id: ruff
+        name: "⚡ Ruff Linter"
+        description: "Fast Python linter for code quality and style"
+        exclude: |
+          (?x)^(
+            tests/.*|
+            migrations/.*|
+            scripts/.*|
+            examples/.*
+          )$
+        types_or: [python, pyi]
+        args:
+          - --fix                    # Auto-fix issues where possible
+          - --exit-non-zero-on-fix   # Exit with error code if fixes were applied
+          - --show-fixes             # Show what fixes were applied
+          - --respect-gitignore      # Respect .gitignore files
+          - --config=pyproject.toml  # Use configuration from pyproject.toml
+
+      - id: ruff-format
+        name: "🎨 Ruff Formatter"
+        description: "Fast Python code formatter (Black-compatible)"
+        exclude: |
+          (?x)^(
+            tests/.*|
+            migrations/.*|
+            scripts/.*|
+            examples/.*
+          )$
+        types_or: [python, pyi]
+        args:
+          - --config=pyproject.toml  # Use configuration from pyproject.toml
+          - --diff                   # Show diffs for formatting changes
+
+  # ==========================================
+  # MYPY - STATIC TYPE CHECKING
+  # ==========================================
+  # Static type checker for Python
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.16.1
+    hooks:
+      - id: mypy
+        name: "🔍 MyPy Type Checker"
+        description: "Static type checking for Python code"
+        entry: mypy
+        language: python
+        types: [python]
+        args:
+          - --disallow-untyped-defs        # Require type annotations for functions
+          - --disallow-incomplete-defs     # Require complete type annotations
+          - --disallow-untyped-calls       # Disallow calls to untyped functions
+          - --warn-redundant-casts         # Warn about redundant type casts
+          - --warn-unused-ignores          # Warn about unused type ignore comments
+          - --warn-return-any              # Warn about functions returning Any
+          - --strict-equality              # Strict equality checks
+          - --warn-unreachable             # Warn about unreachable code
+          - --ignore-missing-imports       # Ignore missing imports for now
+          - --show-error-codes             # Show error codes in output
+          - --pretty                       # Pretty-print error messages
+          - --color-output                 # Colorize output
+        exclude: |
+          (?x)^(
+            docs/.*|
+            tests/.*|
+            migrations/.*|
+            scripts/.*|
+            examples/.*|
+            setup\.py$
+          )$
+        additional_dependencies:
+          - types-requests
+          - types-PyYAML
+          - types-toml
+          - types-setuptools
+
+  # ==========================================
+  # CONVENTIONAL COMMITS
+  # ==========================================
+  # Enforce conventional commit message format
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.2.0
+    hooks:
+      - id: conventional-pre-commit
+        name: "📝 Conventional Commit Messages"
+        description: "Enforce conventional commit message format for better changelog generation"
+        stages: [commit-msg]
+        args:
+          - --strict                    # Strict mode - fail on any violations
+          - --force-scope              # Require scope in commit messages
+          - --verbose                  # Verbose output
+          - --optional-scope           # Make scope optional for certain types
+          # Allowed commit types with descriptions:
+          - feat      # New features
+          - fix       # Bug fixes
+          - chore     # Maintenance tasks
+          - refactor  # Code refactoring
+          - docs      # Documentation changes
+          - style     # Code style changes
+          - test      # Test additions/modifications
+          - perf      # Performance improvements
+          - ci        # CI/CD changes
+          - build     # Build system changes
+          - revert    # Revert previous commits
+          - security  # Security fixes
+          - deps      # Dependency updates
+
+  # ==========================================
+  # PYDOCLINT - DOCSTRING VALIDATION
+  # ==========================================
+  # Comprehensive docstring linting for Python
+  - repo: https://github.com/jsh9/pydoclint
+    rev: 0.6.7
+    hooks:
+      - id: pydoclint
+        name: "📚 Validate Python Docstrings"
+        description: "Comprehensive docstring validation following Google style"
+        types: [python]
+        args:
+          - --style=google                                          # Use Google docstring style
+          - --arg-type-hints-in-docstring=True                    # Include type hints in docstrings
+          - --arg-type-hints-in-signature=True                    # Include type hints in signatures
+          - --check-arg-order=True                                # Check argument order consistency
+          - --skip-checking-short-docstrings=False                # Check all docstrings
+          - --skip-checking-raises=False                          # Check raises documentation
+          - --check-return-types=True                             # Validate return type documentation
+          - --require-return-section-when-returning-nothing=True  # Require returns section for None
+          - --require-yield-section-when-yielding-nothing=True    # Require yields section for generators
+          - --check-yield-types=True                              # Validate yield type documentation
+          - --check-class-attributes=True                         # Check class attribute documentation
+          - --should-document-private-class-attributes=True       # Document private attributes
+          - --should-document-star-arguments=True                 # Document *args and **kwargs
+          - --check-style-mismatch=True                          # Check for style inconsistencies
+          - --baseline-file=.pydoclint-baseline                  # Use baseline file for existing violations
+          - --exclude=\.git|\.tox|tests/data/docs|migrations     # Exclude certain directories
+        exclude: |
+          (?x)^(
+            tests/.*|
+            migrations/.*|
+            scripts/.*|
+            examples/.*|
+            setup\.py$|
+            conftest\.py$
+          )$
+
+  # ==========================================
+  # FLAKE8 - ADDITIONAL STYLE CHECKS
+  # ==========================================
+  # Python style guide enforcement with plugins
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.3.0
+    hooks:
+      - id: flake8
+        name: "📋 Flake8 Style Checker"
+        description: "Python style guide enforcement with docstring validation"
+        types: [python]
+        additional_dependencies:
+          - flake8-docstrings>=1.7.0    # Docstring style checking
+          - flake8-bugbear>=23.12.2     # Additional bug and design problems
+          - flake8-comprehensions>=3.14 # List/dict/set comprehension checks
+          - flake8-simplify>=0.21.0     # Code simplification suggestions
+          - flake8-bandit>=4.1.1        # Security issue detection
+          - flake8-broken-line>=1.0.0   # Line break checks
+          - flake8-commas>=2.1.0        # Trailing comma enforcement
+          - flake8-quotes>=3.3.2        # Quote style consistency
+          - flake8-import-order>=0.18.2 # Import order checking
+          - pep8-naming>=0.13.3         # PEP 8 naming convention checks
+        args:
+          - --docstring-convention=google  # Use Google docstring style
+          - --max-line-length=100         # Maximum line length
+          - --max-complexity=10           # Maximum cyclomatic complexity
+          - --select=E,W,F,C,B,N,D        # Select error categories
+          - --ignore=E203,E501,W503,D100,D104,D107  # Ignore specific errors
+          - --per-file-ignores=__init__.py:F401,D104  # Per-file ignore rules
+          - --import-order-style=pep8     # Import order style
+          - --application-import-names=src # Application import names
+          - --statistics                  # Show statistics
+          - --count                       # Show error count
+        files: ^src/.*\.py$
+
+  # ==========================================
+  # SECURITY SCANNING
+  # ==========================================
+  # Security vulnerability scanning
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.10
+    hooks:
+      - id: bandit
+        name: "🔒 Security Scanner (Bandit)"
+        description: "Scan Python code for common security issues"
+        types: [python]
+        args:
+          - --recursive          # Scan recursively
+          - --format=json        # JSON output format
+          - --confidence-level=medium  # Confidence level
+          - --severity-level=medium    # Severity level
+          - --skip=B101,B601     # Skip certain tests
+        exclude: |
+          (?x)^(
+            tests/.*|
+            migrations/.*|
+            scripts/.*|
+            examples/.*
+          )$
+
+  # Safety check for known security vulnerabilities in dependencies
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.3.3
+    hooks:
+      - id: python-safety-dependencies-check
+        name: "🛡️  Safety Dependency Check"
+        description: "Check dependencies for known security vulnerabilities"
+        files: requirements.*\.txt$
+        stages: [pre-commit, pre-push]
+
+  # ==========================================
+  # DOCUMENTATION CHECKS
+  # ==========================================
+  # Markdown linting and formatting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.43.0
+    hooks:
+      - id: markdownlint
+        name: "📝 Markdown Linter"
+        description: "Lint Markdown files for style and formatting issues"
+        args:
+          - --fix                    # Auto-fix issues where possible
+          - --config=.markdownlint.json  # Use custom configuration
+        files: \.(md|markdown)$
+        exclude: |
+          (?x)^(
+            CHANGELOG\.md$|
+            \.github/.*\.md$
+          )$
+
+  # ==========================================
+  # JUPYTER NOTEBOOK SUPPORT
+  # ==========================================
+  # Jupyter notebook cleaning and validation
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.8.7
+    hooks:
+      - id: nbqa-ruff
+        name: "📓 Jupyter Notebook Linting"
+        description: "Lint Jupyter notebooks with Ruff"
+        args: [--fix]
+        additional_dependencies: [ruff==0.12.0]
+
+      - id: nbqa-ruff-format
+        name: "🎨 Jupyter Notebook Formatting"
+        description: "Format Jupyter notebooks with Ruff"
+        additional_dependencies: [ruff==0.12.0]
+
+  # Clean notebook outputs and metadata
+  - repo: https://github.com/srstevenson/nb-clean
+    rev: 3.3.0
+    hooks:
+      - id: nb-clean
+        name: "🧹 Clean Jupyter Notebooks"
+        description: "Remove outputs and metadata from Jupyter notebooks"
+        args: [--remove-empty-cells, --preserve-cell-metadata]
+        files: \.ipynb$
+
+  # ==========================================
+  # SHELL SCRIPT VALIDATION
+  # ==========================================
+  # Shell script linting and formatting
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        name: "🐚 Shell Script Linter"
+        description: "Lint shell scripts for common issues and best practices"
+        args: [--severity=warning, --shell=bash]
+        types: [shell]
+
+  # ==========================================
+  # DOCKER VALIDATION
+  # ==========================================
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        name: "🐳 Dockerfile Linter"
+        description: "Lint Dockerfiles for best practices and security"
+        args: [--ignore=DL3008, --ignore=DL3009]
+        files: Dockerfile.*
+
+  # ==========================================
+  # LOCAL CUSTOM HOOKS
+  # ==========================================
+  # Project-specific local hooks
+  - repo: local
+    hooks:
+      # Dependency installation and sync
+      - id: install-dependencies
+        name: "📦 Install Dependencies"
+        description: "Install project dependencies using uv"
+        entry: uv pip install -e .
+        language: python
+        always_run: true
+        pass_filenames: false
+        stages: [pre-commit, pre-push]
+        verbose: true
+
+      - id: sync-dependencies
+        name: "🔄 Sync Dependencies"
+        description: "Sync development dependencies"
+        entry: uv pip sync requirements-dev.txt
+        language: python
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push]
+
+      # Comprehensive testing
+      - id: test-unit
+        name: "🧪 Run Unit Tests"
+        description: "Execute unit tests with coverage reporting"
+        entry: uv run pytest
+        language: python
+        args: [
+          "tests/unit/",
+          "--maxfail=3",
+          "--tb=short",
+          "--disable-warnings",
+          "--quiet",
+          "--cov=src/",
+          "--cov-report=term-missing",
+          "--cov-fail-under=80",
+          "--durations=10"
+        ]
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: test-integration
+        name: "🔗 Run Integration Tests"
+        description: "Execute integration tests"
+        entry: uv run pytest
+        language: python
+        args: [
+          "tests/integration/",
+          "--maxfail=1",
+          "--tb=short",
+          "--disable-warnings",
+          "--quiet"
+        ]
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push, manual]
+
+      # Performance and complexity analysis
+      - id: complexity-check
+        name: "📊 Complexity Analysis"
+        description: "Check code complexity with radon"
+        entry: uv run radon
+        language: python
+        args: [cc, --min=B, --show-complexity, src/]
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: maintainability-check
+        name: "🔧 Maintainability Check"
+        description: "Check code maintainability index"
+        entry: uv run radon
+        language: python
+        args: [mi, --min=B, src/]
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push]
+
+      # Documentation generation and validation
+      - id: generate-docs
+        name: "📚 Generate Documentation"
+        description: "Generate API documentation with Sphinx"
+        entry: uv run sphinx-build
+        language: python
+        args: [-W, -b, html, docs/source, docs/build/html]
+        always_run: true
+        pass_filenames: false
+        stages: [pre-push, manual]
+
+      # License and copyright validation
+      - id: check-license-headers
+        name: "📄 Check License Headers"
+        description: "Ensure all Python files have proper license headers"
+        entry: python scripts/check_license_headers.py
+        language: python
+        types: [python]
+        exclude: |
+          (?x)^(
+            tests/.*|
+            migrations/.*|
+            setup\.py$|
+            conftest\.py$
+          )$
+
+      # Version consistency check
+      - id: version-consistency
+        name: "🏷️  Version Consistency Check"
+        description: "Ensure version numbers are consistent across files"
+        entry: python scripts/check_version_consistency.py
+        language: python
+        files: |
+          (?x)^(
+            pyproject\.toml$|
+            src/.*/__init__\.py$|
+            docs/conf\.py$
+          )$
+        always_run: true
+        pass_filenames: false
+
+      # Changelog validation
+      - id: changelog-check
+        name: "📋 Changelog Validation"
+        description: "Validate changelog format and entries"
+        entry: python scripts/validate_changelog.py
+        language: python
+        files: CHANGELOG\.md$
+        stages: [pre-push]
+
+# ==========================================
+# CONFIGURATION NOTES
+# ==========================================
+# 
+# Additional configuration files you should create:
+#
+# 1. .markdownlint.json - Markdown linting rules
+# 2. .pydoclint-baseline - Baseline for existing docstring violations
+# 3. pyproject.toml - Configure ruff, mypy, and other tools
+# 4. .bandit - Bandit security scanner configuration
+# 5. scripts/check_license_headers.py - Custom license header validation
+# 6. scripts/check_version_consistency.py - Version consistency validation
+# 7. scripts/validate_changelog.py - Changelog format validation
+#
+# Recommended pyproject.toml additions:
+# [tool.ruff]
+# target-version = "py39"
+# line-length = 100
+# select = ["E", "W", "F", "I", "N", "D", "UP", "B", "C4", "SIM", "PIE"]
+# ignore = ["D100", "D104", "D107"]
+# 
+# [tool.mypy]
+# python_version = "3.9"
+# strict = true
+# warn_return_any = true
+# warn_unused_configs = true
+#
+# Usage:
+# - Install: pre-commit install --install-hooks
+# - Run all: pre-commit run --all-files
+# - Run specific: pre-commit run ruff --all-files
+# - Update: pre-commit autoupdate
+# - Skip: git commit --no-verify (use sparingly)
