@@ -36,5 +36,8 @@ sudo yay -S \
     stremio \
     hyprshot \
     hyprlock \
-    hypridle
+    hypridle \
+    hyprpaper \
+    nwg-look \
+    catppuccin-gtk-theme-mocha \
 ```
