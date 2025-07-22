@@ -15,7 +15,8 @@ sudo pacman -S \
     vlc \
     sxiv \
     waybar \
-    ttf-font-awesome
+    ttf-font-awesome \
+    pipewire pipewire-pulse wireplumber \
 ```
 
 Now other package managers like `yay` do not come pre-installed with the arch linux and should be installed separately. This can be done as below:
