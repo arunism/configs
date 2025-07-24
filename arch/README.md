@@ -13,11 +13,11 @@ sudo pacman -S \
     npm \
     xclip \
     vlc \
+    vlc-plugin-ffmpeg \
     sxiv \
     waybar \
     ttf-font-awesome \
     pipewire pipewire-pulse wireplumber \
-    alacritty \
 ```
 
 Now other package managers like `yay` do not come pre-installed with the arch linux and should be installed separately. This can be done as below:
@@ -43,5 +43,4 @@ sudo yay -S \
     nwg-look \
     catppuccin-gtk-theme-mocha \
     wlogout \
-    rofi \
 ```

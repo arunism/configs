@@ -1,73 +1,70 @@
 {
   // ******************** //
-  // Basic Configurations //
-  // ******************** //
+  // CORE CONFIGURATIONS //
+  // ******************* //
   "position": "top",
-  // "layer": "top",
+  "layer": "top",
   // "output": "*",
+  "margin-top": 5,
+  "margin-bottom": 0,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 0,
   "mode": "dock",
   "exclusive": true,
   "passthrough": false,
   "reload_style_on_change": true,
 
-  // ****************************//
-  // Modules Position Definition //
-  // ****************************//
-  "modules-left": ["hyprland/workspaces", "wlr/taskbar"],
+
+  // ****************//
+  // MODULE INCLUDES //
+  // ****************//
+  "include": ["~/.config/waybar/modules.jsonc"],
+
+
+  // *****************************//
+  // MODULES LAYOUT CONFIGURATION //
+  // *****************************//
+  "modules-left": [
+    "custom/menu",
+    "wlr/taskbar",
+    "group/quicklinks"
+    // "hyprland/window"
+  ],
   "modules-center": [
-    "clock"
+    "hyprland/workspaces"
   ],
   "modules-right": [
-    "network",
+    "custom/updates",
     "pulseaudio",
-    "battery"
+    "bluetooth",
+    "battery",
+    "group/hardware",
+    "network",
+    "custom/exit",
+    "clock"
   ],
 
-  // ***************************** //
-  //  Module-level Configurations  //
-  // ***************************** //
 
-  // 1. Battery
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "tooltip-format": "{time}"
+  // ******************* //
+  //  GROUP DEFINITIONS  //
+  // ******************* //
+  "group/quicklinks": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/filemanager",
+      "custom/browser"
+    ]
   },
 
-  // 2. Bluetooth
 
-  // 3. Clock
-  "clock": {
-    "format": "{:%a %d %B | %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-
-  // 4. Network
-  "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span> Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
-  },
-
-  // 5. Pulseaudio
-  "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
-      "format-icons": {
-          "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol"
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "disk",
+      "cpu",
+      "memory"
+    ]
   }
+
 }
