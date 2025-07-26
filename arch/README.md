@@ -17,6 +17,7 @@ sudo pacman -S \
     sxiv \
     waybar \
     rofi \
+    thunar \
     ttf-font-awesome \
     pipewire pipewire-pulse wireplumber \
 ```
