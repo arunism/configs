@@ -10,10 +10,10 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "&#x202b;{icon}&#x202c;   {capacity}%",
-    "format-charging": "&#x202b;&#x202c;  {capacity}%",
-    "format-plugged": "&#x202b;&#x202c;  {capacity}%",
-    "format-alt": "&#x202b;{icon}&#x202c;  {time}",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": [" ", " ", " ", " ", " "]
@@ -22,6 +22,9 @@
 
   // === BLUETOOTH === //
   "bluetooth": {
+    "format": " {status}",
+    "format-on": " on",
+    "format-connected": " paired",
     "format-disabled": "",
     "format-off": "",
     "interval": 30,
@@ -40,7 +43,7 @@
 
   // === CPU === //
   "cpu": {
-    "format": "/ C {usage}% ",
+    "format": "/ C {usage}%",
     "on-click": "alacritty -e htop"
   },
 
@@ -72,14 +75,14 @@
   // === CUSTOM MENU === //
   "custom/menu": {
     "format": "Apps",
-    "on-click": "wofi --show drun",
+    "on-click": "rofi -show drun",
     "tooltip": false
   },
 
 
   // === CUSTOM UPDATE === //
   "custom/updates": {
-    "format": "   {}",
+    "format": "  {}",
     "tooltip-format": "{}",
     "escape": true,
     "return-type": "json",       
@@ -93,7 +96,7 @@
   // === DISK === //
   "disk": {
     "interval": 30,
-    "format": "D {percentage_used}% ",
+    "format": "D {percentage_used}%",
     "path": "/",
     "on-click": "alacritty -e htop"
   },
@@ -131,7 +134,7 @@
 
   // === MEMORY === //
   "memory": {
-    "format": "/ M {}% ",
+    "format": "/ M {}%",
     "on-click": "alacritty -e htop"
   },
 
@@ -139,11 +142,11 @@
   // === NETWORK === //
   "network": {
     "format": "{ifname}",
-    "format-wifi": "<span size='13000' foreground='#000000'>  </span> {signalStrength}%",
+    "format-wifi": "<span size='13000' foreground='#000000'> </span> {signalStrength}%",
     "format-ethernet": "  {ipaddr}",
     "format-disconnected": "Not connected", //An empty format will hide the module.
-    "tooltip-format": " {ifname} via {gwaddri}",
-    "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+    "tooltip-format": "  {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
@@ -154,7 +157,7 @@
   // === PULSEAUDIO === //
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",

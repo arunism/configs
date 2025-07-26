@@ -16,6 +16,7 @@ sudo pacman -S \
     vlc-plugin-ffmpeg \
     sxiv \
     waybar \
+    rofi \
     ttf-font-awesome \
     pipewire pipewire-pulse wireplumber \
 ```
