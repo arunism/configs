@@ -27,6 +27,7 @@
   // *****************************//
   "modules-left": [
     "custom/menu",
+    "custom/exit",
     "wlr/taskbar",
     "group/quicklinks"
     // "hyprland/window"
@@ -41,7 +42,6 @@
     "battery",
     "group/hardware",
     "network",
-    "custom/exit",
     "clock"
   ],
 

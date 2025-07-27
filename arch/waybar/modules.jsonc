@@ -67,7 +67,7 @@
   // === CUSTOM FILEMANAGER === //
   "custom/filemanager": {
     "format": "",
-    "on-click": "dolphin",
+    "on-click": "thunar",
     "tooltip": false
   },
 
