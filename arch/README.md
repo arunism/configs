@@ -14,10 +14,10 @@ sudo pacman -S \
     xclip \
     vlc \
     vlc-plugin-ffmpeg \
-    sxiv \
+    nsxiv \
     waybar \
     rofi \
-    thunar \
+    yazi \
     ttf-font-awesome \
     pipewire pipewire-pulse wireplumber \
 ```
@@ -36,6 +36,7 @@ Now install `yay` packages following the similar command as below:
 
 ```shell
 sudo yay -S \
+    yaak \
     google-chrome \
     stremio \
     hyprshot \
@@ -43,6 +44,7 @@ sudo yay -S \
     hypridle \
     hyprpaper \
     nwg-look \
-    catppuccin-gtk-theme-mocha \
     wlogout \
+    mongodb-compass \
+    catppuccin-gtk-theme-mocha \
 ```
