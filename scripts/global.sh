@@ -10,7 +10,7 @@ readonly CONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 readonly CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/aconfig"
 
 export cloneDir="$CLONE_DIR" confDir="$CONF_DIR" cacheDir="$CACHE_DIR"
-export getAur="yay" myShell="zsh" ACONFIG_LOG="$(date +'%y%m%d_%Hh%Mm%Ss')"
+export aurHlpr="yay" myShell="zsh" ACONFIG_LOG="$(date +'%y%m%d_%Hh%Mm%Ss')"
 
 
 # ============================ #

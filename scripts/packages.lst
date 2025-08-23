@@ -1,0 +1,101 @@
+# ======================== #
+# ====     System     ==== #
+# ======================== #
+uwsm                     # A standalone Wayland session manager
+pipewire                 # Audio/video server
+pipewire-alsa            # Pipewire ALSA client
+pipewire-audio           # Pipewire audio client
+pipewire-jack            # Pipewire JACK client
+pipewire-pulse           # Pipewire PulseAudio client
+gst-plugin-pipewire      # Pipewire GStreamer client
+wireplumber              # Pipewire session manager
+pavucontrol              # PulseAudio volume control
+pamixer                  # PulseAudio CLI mixer
+networkmanager           # Network manager
+network-manager-applet   # Network manager system tray utility
+bluez                    # Bluetooth protocol stack
+bluez-utils              # Bluetooth utility CLI
+blueman                  # Bluetooth manager GUI
+brightnessctl            # Screen brightness control
+playerctl                # Media controls
+udiskie                  # Manage removable media
+
+# ======================== #
+# ==  Display Manager  === #
+# ======================== #
+sddm                     # Display manager for KDE Plasma
+qt5-quickcontrols        # For SDDM theme UI elements
+qt5-quickcontrols2       # For SDDM theme UI elements
+qt5-graphicaleffects     # For SDDM theme effects
+
+# ======================== #
+# ==  Window Manager   === #
+# ======================== #
+hyprland                 # wlroots-based Wayland compositor
+dunst                    # Notification daemon
+rofi-wayland             # Application launcher
+waybar                   # System bar
+swww                     # Wallpaper manager
+hyprlock                 # Lock screen
+wlogout                  # Logout menu
+grim                     # Screenshot tool
+hyprpicker               # Color picker
+slurp                    # Region select for screenshot/screenshare
+satty                    # Modern screenshot annotation
+cliphist                 # Clipboard manager
+wl-clip-persist          # Keep Wayland clipboard after program exit
+hyprsunset               # Blue light filter
+
+# ======================== #
+# ====  Dependencies  ==== #
+# ======================== #
+polkit-gnome             # Authentication agent
+xdg-desktop-portal-hyprland  # XDG portal for Hyprland
+xdg-desktop-portal-gtk   # File picker & DBus integration
+xdg-user-dirs            # Manage ~/Desktop, ~/Music, etc.
+pacman-contrib           # For system update check
+parallel                 # Parallel processing
+jq                       # JSON processing
+imagemagick              # Image processing
+qt5-imageformats         # Image thumbnails in Dolphin
+ffmpegthumbs             # Video thumbnails in Dolphin
+kde-cli-tools            # File type defaults in Dolphin
+libnotify                # Notifications
+noto-fonts-emoji         # Emoji font
+
+# ======================== #
+# =====   Theming    ===== #
+# ======================== #
+nwg-look                 # GTK configuration tool
+qt5ct                    # Qt5 configuration tool
+qt6ct                    # Qt6 configuration tool
+kvantum                  # SVG-based Qt6 theme engine
+kvantum-qt5              # SVG-based Qt5 theme engine
+qt5-wayland              # Wayland support in Qt5
+qt6-wayland              # Wayland support in Qt6
+
+# ======================== #
+# ===   Applications   === #
+# ======================== #
+kitty                    # Terminal
+dolphin                  # KDE file manager
+ark                      # KDE file archiver
+unzip                    # Extract zip files
+neovim                   # Terminal text editor
+nwg-displays             # Monitor management utility
+fzf                      # Command-line fuzzy finder
+
+# ======================== #
+# =====    Shell     ===== #
+# ======================== #
+starship | zsh           # Customizable shell prompt (Rust)
+# starship-git           # Alternative Starship package
+# eza       | fish         # File lister for Fish
+# starship  | fish         # Customizable shell prompt
+# duf       | fish         # Prettier df for Fish
+fastfetch                # System information fetch tool
+
+# ======================== #
+# =====   aConfig    ===== #
+# ======================== #
+hypridle                 # Idle daemon
