@@ -10,7 +10,6 @@ set -euo pipefail
 readonly backupSuffix=".aconfig.bkp"
 readonly aConfigPath="$HOME/.local/lib/aconfig"
 readonly scrDir="$(dirname "$(realpath "$0")")"
-readonly pkgLst="${scrDir}/packages.lst"
 readonly installPkgLst="${scrDir}/install_pkg.lst"
 
 source "${scrDir}/global.sh" || { echo "Error: unable to source global.sh"; exit 1; }
@@ -46,6 +45,12 @@ main() {
   setup_clone_dir
   install_aur_helper
   process_packages
+
+  echo "#####################################"
+  echo "$aurHlpr"
+  echo "$arch_packages"
+  echo "======================================"
+  echo "$aur_packages"
 
   echo
   install_packages arch_packages "arch" "sudo pacman"

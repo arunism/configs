@@ -19,31 +19,31 @@ source "${scrDir}/global.sh" || { echo "Error: unable to source global.sh"; exit
 # ==== PRE-INSTALLATION -> SYSTEM-D BOOT ==== #
 # =========================================== #
 configure_systemd_boot() {
-  if ! pkg_installed systemd || ! nvidia_detect; then return 0; fi
-
   local product
-  product=$(bootctl status 2>/dev/null | awk '$1=="Product:" {print $2}')
-  [[ "$product" == "systemd-boot" ]] || return 0
+  if pkg_installed systemd && nvidia_detect; then
+    product=$(bootctl status 2>/dev/null | awk '$1=="Product:" {print $2}')
+    [[ "$product" == "systemd-boot" ]] || return 0
 
-  print_log -sec "bootloader" -stat "Detected" "systemd-boot"
+    print_log -sec "bootloader" -stat "Detected" "systemd-boot"
 
-  local conf_files backup_files
-  conf_files=$(find /boot/loader/entries/ -name '*.conf' 2>/dev/null | wc -l)
-  backup_files=$(find /boot/loader/entries/ -name "*${backupSuffix}" 2>/dev/null | wc -l)
+    local conf_files backup_files
+    conf_files=$(find /boot/loader/entries/ -name '*.conf' 2>/dev/null | wc -l)
+    backup_files=$(find /boot/loader/entries/ -name "*${backupSuffix}" 2>/dev/null | wc -l)
 
-  if [[ $backup_files -eq $conf_files ]]; then
-    print_log -y "[bootloader] " -stat "skipped" "systemd-boot already configured"
-    return 0
+    if [[ $backup_files -eq $conf_files ]]; then
+      print_log -y "[bootloader] " -stat "skipped" "systemd-boot already configured"
+      return 0
+    fi
+
+    print_log -g "[bootloader] " -b " :: " "Adding nvidia_drm.modeset=1 to boot options"
+
+    find /boot/loader/entries/ -name "*.conf" -print0 | while IFS= read -r -d '' conf; do
+      sudo cp "$conf" "${conf}${backupSuffix}"
+      local options
+      options=$(grep -w "^options" "$conf" | sed 's/\b\(quiet\|splash\|nvidia_drm\.modeset=.\)\b//g')
+      sudo sed -i "/^options/c${options} quiet splash nvidia_drm.modeset=1" "$conf"
+    done
   fi
-
-  print_log -g "[bootloader] " -b " :: " "Adding nvidia_drm.modeset=1 to boot options"
-
-  find /boot/loader/entries/ -name "*.conf" -print0 | while IFS= read -r -d '' conf; do
-    sudo cp "$conf" "${conf}${backupSuffix}"
-    local options
-    options=$(grep -w "^options" "$conf" | sed 's/\b\(quiet\|splash\|nvidia_drm\.modeset=.\)\b//g')
-    sudo sed -i "/^options/c${options} quiet splash nvidia_drm.modeset=1" "$conf"
-  done
 }
 
 

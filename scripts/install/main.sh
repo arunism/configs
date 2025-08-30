@@ -8,8 +8,12 @@ set -euo pipefail
 # ==== Import Variables and Functions ==== #
 # ======================================== #
 readonly scrDir="$(dirname "$(dirname "$(realpath "$0")")")"
+readonly pkgLst="${scrDir}/utils/packages.lst"
 
 source "${scrDir}/global.sh" || { echo "Error: unable to source global.sh"; exit 1; }
+
+export arch_packages=()
+export aur_packages=()
 
 
 # ============================ #
@@ -51,7 +55,7 @@ check_dependencies() {
     [[ -z "$dep" ]] && continue
 
     # Check if dependency is in package list or already installed
-    if ! grep -q "^${dep}|" "$PKG_LIST" && ! pkg_installed "$dep"; then
+    if ! grep -q "^${dep}|" "$pkgLst" && ! pkg_installed "$dep"; then
       print_log -warn "missing" "dependency [$dep] for $pkg"
       return 1
     fi
@@ -88,7 +92,7 @@ process_packages() {
     else
       print_log -r "[error] " "unknown package $pkg"
     fi
-  done < <(sed 's/#.*//' "$PKG_LIST")
+  done < <(sed 's/#.*//' "$pkgLst")
 }
 
 
@@ -97,15 +101,11 @@ process_packages() {
 # ================================== #
 install_packages() {
   local -n packages=$1
-  local type="$2" cmd="$3"
+  local pkgType="$2" cmd="$3"
 
   (( ${#packages[@]} == 0 )) && return 0
 
-  print_log -b "[install] " "$type packages"
+  print_log -b "[install] " "$pkgType packages"
 
-  if [[ ${flg_DryRun:-0} -eq 1 ]]; then
-    printf '[pkg] %s\n' "${packages[@]}"
-  else
-    $cmd ${use_default:+"$use_default"} -S "${packages[@]}"
-  fi
+  $cmd ${use_default:+"$use_default"} -S "${packages[@]}"
 }

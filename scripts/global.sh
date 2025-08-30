@@ -39,7 +39,7 @@ chk_list() {
 nvidia_detect() {
   local gpus=($(lspci -k | awk -F': ' '/VGA|3D/{print $NF}'))
   case "${1:-}" in
-    --verbose) printf '\033[32m[gpu%d]\033[0m detected :: %s\n' "${!gpus[@]}" "${gpus[@]}" ;;
+    --verbose) printf "\033[0;32m[gpu%s]\033[0m detected :: %s\n" "$@" "${dGPU[@]}" ;;
     --drivers)
       for gpu in "${gpus[@]}"; do
         [[ "$gpu" =~ NVIDIA ]] && echo -e "nvidia\nnvidia-utils" && break
