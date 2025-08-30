@@ -36,6 +36,7 @@ install_aur_helper() {
 
   if (cd "$target_dir" && makepkg "${use_default:-}" -si); then
     print_log -sec "AUR" -stat "installed" "${aurHlpr} AUR helper"
+    cd .. && sudo rm -rf "$target_dir"
   else
     print_log -r "AUR" -crit "failed" "${aurHlpr} installation failed"
     exit 1
@@ -64,10 +65,11 @@ check_dependencies() {
 }
 
 
-# ============================================== #
-# ==== Process Packages and Categorize Them ==== #
-# ============================================== #
-process_packages() {
+# ======================================================== #
+# ==== Process Packages, Categorize, and Install them ==== #
+# ======================================================== #
+process_and_install_packages() {
+  # STEP 1: Process Packages
   local pkg deps repo
 
   while IFS='|' read -r pkg deps; do
@@ -93,6 +95,9 @@ process_packages() {
       print_log -r "[error] " "unknown package $pkg"
     fi
   done < <(sed 's/#.*//' "$pkgLst")
+
+  install_packages arch_packages "arch" "sudo pacman"
+  install_packages aur_packages "aur" "$aurHlpr"
 }
 
 

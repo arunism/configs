@@ -44,18 +44,7 @@ main() {
   prepare_packages
   setup_clone_dir
   install_aur_helper
-  process_packages
-
-  echo "#####################################"
-  echo "$aurHlpr"
-  echo "$arch_packages"
-  echo "======================================"
-  echo "$aur_packages"
-
-  echo
-  install_packages arch_packages "arch" "sudo pacman"
-  echo
-  install_packages aur_packages "aur" "$aurHlpr"
+  process_and_install_packages
 }
 
 main "$@"
