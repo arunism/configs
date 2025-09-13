@@ -16,6 +16,7 @@ source "${scrDir}/global.sh" || { echo "Error: unable to source global.sh"; exit
 source "${scrDir}/install/pre.sh" || { echo "Error: unable to source install/pre.sh"; exit 1; }
 source "${scrDir}/install/main.sh" || { echo "Error: unable to source install/main.sh"; exit 1; }
 source "${scrDir}/install/post.sh" || { echo "Error: unable to source install/post.sh"; exit 1; }
+source "${scrDir}/restore/fonts.sh" || { echo "Error: unable to source restore/fonts.sh"; exit 1; }
 
 
 # Restore configurations and generate cache
@@ -45,6 +46,7 @@ main() {
   setup_clone_dir
   install_aur_helper
   process_and_install_packages
+  process_fonts
 }
 
 main "$@"
