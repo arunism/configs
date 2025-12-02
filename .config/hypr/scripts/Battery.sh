@@ -7,3 +7,4 @@ for i in {0..3}; do
     echo "Battery: $battery_capacity% ($battery_level)"
   fi
 done
+

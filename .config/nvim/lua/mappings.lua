@@ -49,7 +49,7 @@ map("v", "<leader>a'", "va'", { desc = "Select around ''" })
 map("v", "<leader>i`", "vi`", { desc = "Select inside ``" })
 map("v", "<leader>a`", "va`", { desc = "Select around ``" })
 
-map("n", "<C-b>", ":NvimTreeToggle<CR>", {})
+map("n", "<C-m>", ":NvimTreeToggle<CR>", {})
 local builtin = require("telescope.builtin")
 map("n", "<leader>fg", builtin.live_grep, {})
 
