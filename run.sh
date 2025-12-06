@@ -11,4 +11,8 @@ source "$SCRIPT_DIR/packages.sh"
 source "$SCRIPT_DIR/audio.sh"
 source "$SCRIPT_DIR/bluetooth.sh"
 source "$SCRIPT_DIR/sddm.sh"
+source "$SCRIPT_DIR/fonts.sh"
+source "$SCRIPT_DIR/disk.sh"
+source "$SCRIPT_DIR/battery.sh"
+source "$SCRIPT_DIR/zsh.sh"
 

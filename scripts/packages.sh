@@ -25,6 +25,7 @@ package_list=(
   xdg-utils
   brightnessctl
   btop
+  fastfetch
   gnome-system-monitor
   nvtop
   nwg-look
