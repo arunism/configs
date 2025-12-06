@@ -33,6 +33,13 @@ package_list=(
   nwg-look
   nwg-displays
   pacman-contrib
+  swaync
+  thunar 
+  thunar-volman 
+  tumbler
+  ffmpegthumbnailer 
+  thunar-archive-plugin
+  xarchiver
 )
 
 # Source global functions from an external script
