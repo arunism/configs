@@ -4,6 +4,7 @@ package_list=(
   curl
   gvfs
   gvfs-mtp
+  hyprpaper
   hyprpolkitagent
   imagemagick
   kitty
@@ -15,6 +16,7 @@ package_list=(
   qt6ct
   qt6-svg
   rofi
+  zip
   unzip
   waybar
   wget

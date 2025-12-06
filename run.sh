@@ -15,4 +15,10 @@ source "$SCRIPT_DIR/fonts.sh"
 source "$SCRIPT_DIR/disk.sh"
 source "$SCRIPT_DIR/battery.sh"
 source "$SCRIPT_DIR/zsh.sh"
+source "$SCRIPT_DIR/gtk.sh"
+
+# Copy all the configurations to system
+cp -r ./.config/* "$HOME/.config/"
+
+echo -e "\n${OK} System Setup Complete."
 
