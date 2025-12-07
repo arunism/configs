@@ -34,11 +34,11 @@ while true; do
         DEVICE=$(echo "$line" | awk '{print $1}')
         MOUNT=$(echo "$line" | awk '{print $6}')
         USAGE=$(echo "$line" | awk '{print $5}' | sed 's/%//')
-        
+
         if ! [[ "$USAGE" =~ ^[0-9]+$ ]]; then
             continue
         fi
-        
+
         if [ "$USAGE" -ge "$DISK_CRITICAL_THRESHOLD" ]; then
             if [ "${NOTIFIED_CRITICAL[$MOUNT]}" != "true" ]; then
                 notify-send -u critical -i drive-harddisk "Critical Disk Space" "Mount point $MOUNT is ${USAGE}% full!\nDevice: $DEVICE"
@@ -57,7 +57,7 @@ while true; do
             fi
         fi
     done
-    
+
     sleep "$CHECK_INTERVAL"
 done
 EOF

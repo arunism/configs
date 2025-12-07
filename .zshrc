@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="refined"
 
-plugins=( 
+plugins=(
     git
     archlinux
     zsh-autosuggestions
@@ -14,7 +14,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# My alias 
+# My alias
 alias cty='tty-clock -S -c -C 6 -t -n -D'
 alias fucking='sudo'
 alias n='nvim'

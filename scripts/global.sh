@@ -23,7 +23,7 @@ install_package_pacman() {
     echo -e "${INFO} ${MAGENTA}$1${RESET} already installed."
   else
     # Install package
-    stdbuf -oL sudo pacman -S --noconfirm "$1" 
+    stdbuf -oL sudo pacman -S --noconfirm "$1"
 
     # Verify installation
     if pacman -Q "$1" &>/dev/null ; then
@@ -43,7 +43,7 @@ install_package() {
     echo -e "${INFO} ${MAGENTA}$1${RESET} already installed."
   else
     # Install package
-    stdbuf -oL $ISAUR -S --noconfirm "$1" 
+    stdbuf -oL $ISAUR -S --noconfirm "$1"
 
     # Verify installation
     if $ISAUR -Q "$1" &>> /dev/null ; then
@@ -56,7 +56,7 @@ install_package() {
 
 # Install a package without checking if it's already installed
 install_package_f() {
-  stdbuf -oL $ISAUR -S --noconfirm "$1" 
+  stdbuf -oL $ISAUR -S --noconfirm "$1"
 
   # Verify installation
   if $ISAUR -Q "$1" &>> /dev/null ; then
@@ -73,7 +73,7 @@ uninstall_package() {
   if pacman -Qi "$pkg" &>/dev/null; then
     echo -e "${NOTE} Removing $pkg..."
     sudo pacman -R --noconfirm "$pkg" | grep -v "error: target not found"
-    
+
     if ! pacman -Qi "$pkg" &>/dev/null; then
       echo -e "\e[1A\e[K${OK} $pkg removed."
     else
@@ -85,4 +85,3 @@ uninstall_package() {
   fi
   return 0
 }
-

@@ -30,4 +30,3 @@ else
     notify-send -i "$iDIR/error.png" -u critical "Unsupported distro"
     exit 1
 fi
-

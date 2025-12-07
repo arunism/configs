@@ -23,4 +23,3 @@ case "$1" in
         echo "Usage: $0 [--btop | --nvtop | --nmtui | --term | --files]"
         ;;
 esac
-

@@ -41,4 +41,3 @@ echo -e "\n${OK} Pipewire setup complete!"
 
 # Print two blank lines for readability
 printf "\n%.0s" {1..2}
-

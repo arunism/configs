@@ -49,4 +49,3 @@ Bv=$(calc $B ${resolution})
 
 echo "wlogout: $msg settings"
 wlogout --protocol layer-shell $flags -T "$T" -B "$Bv" &
-

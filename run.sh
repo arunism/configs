@@ -10,12 +10,12 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts"
 source "$SCRIPT_DIR/packages.sh"
 source "$SCRIPT_DIR/audio.sh"
 source "$SCRIPT_DIR/bluetooth.sh"
-source "$SCRIPT_DIR/sddm.sh"
 source "$SCRIPT_DIR/fonts.sh"
 source "$SCRIPT_DIR/disk.sh"
 source "$SCRIPT_DIR/battery.sh"
 source "$SCRIPT_DIR/zsh.sh"
 source "$SCRIPT_DIR/gtk.sh"
+source "$SCRIPT_DIR/sddm.sh"
 
 # Copy all the configurations to system
 cp -r ./.config/* "$HOME/.config/"
@@ -24,4 +24,3 @@ cp -r ./.config/* "$HOME/.config/"
 chmod +x "$HOME"/.config/scripts/*.sh
 
 echo -e "\n${OK} System Setup Complete."
-

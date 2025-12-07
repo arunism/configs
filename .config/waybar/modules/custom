@@ -123,7 +123,7 @@
 	"on-scroll-down": "$HOME/.config/scripts/volume.sh --dec",
 	"smooth-scrolling-threshold": 1,
 },
-    
+
 "custom/power": {
 	"format": " ⏻ ",
 	"on-click": "$HOME/.config/scripts/wlogout.sh",
@@ -138,7 +138,7 @@
     "tooltip": true,
 	"tooltip-format": "Left Click: Reboot",
 },
-    
+
 "custom/quit": {
     "format": "󰗼",
     "on-click": "hyprctl dispatch exit",

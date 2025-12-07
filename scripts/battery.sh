@@ -36,7 +36,7 @@ NOTIFIED_CRITICAL=false
 while true; do
     BATTERY_LEVEL=$(acpi -b | grep -P -o '[0-9]+(?=%)')
     BATTERY_STATUS=$(acpi -b | grep -o 'Discharging\|Charging\|Full')
-    
+
     if [ "$BATTERY_STATUS" = "Discharging" ]; then
         if [ "$BATTERY_LEVEL" -le "$CRITICAL_BATTERY_THRESHOLD" ] && [ "$NOTIFIED_CRITICAL" = false ]; then
             notify-send -u critical -i battery-caution "Critical Battery" "Battery level is at ${BATTERY_LEVEL}%!"
@@ -50,7 +50,7 @@ while true; do
         NOTIFIED_LOW=false
         NOTIFIED_CRITICAL=false
     fi
-    
+
     sleep "$CHECK_INTERVAL"
 done
 EOF
@@ -94,4 +94,3 @@ echo "${NOTE} Disable service: systemctl --user disable battery-monitor"
 
 # Print two blank lines for readability
 printf "\n%.0s" {1..2}
-

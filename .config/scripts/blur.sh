@@ -16,4 +16,3 @@ else
     hyprctl keyword decoration:blur:passes 2
     notify-send -e -u low -i "$notif/ja.png" "Normal Blur"
 fi
-

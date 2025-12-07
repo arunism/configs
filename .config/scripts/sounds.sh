@@ -65,4 +65,3 @@ sound_file=$(find_sound "$sDIR" \
 
 # ---- Play ----
 pw-play "$sound_file" || pa-play "$sound_file"
-

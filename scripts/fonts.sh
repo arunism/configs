@@ -27,4 +27,3 @@ echo "\n${OK} Font installation complete."
 
 # Print two blank lines for readability
 printf "\n%.0s" {1..2}
-

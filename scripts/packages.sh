@@ -1,10 +1,12 @@
 # List of essential Hyprland packages to install
 package_list=(
   bc
+  jq
   curl
   gvfs
   gvfs-mtp
   hypridle
+  hyprlock
   hyprpaper
   hyprpolkitagent
   imagemagick
@@ -35,12 +37,16 @@ package_list=(
   nwg-displays
   pacman-contrib
   swaync
-  thunar 
-  thunar-volman 
+  thunar
+  thunar-volman
   tumbler
-  ffmpegthumbnailer 
+  ffmpegthumbnailer
   thunar-archive-plugin
   xarchiver
+  nodejs
+  npm
+  google-chrome
+  python-pip
 )
 
 # Source global functions from an external script
@@ -55,4 +61,3 @@ echo -e "\n${OK} Installation complete."
 
 # Print two blank lines for readability
 printf "\n%.0s" {1..2}
-

@@ -17,7 +17,7 @@
 # Ignore Bash script specific files
 *.bak
 *.sh.swp
-*.sh~ 
+*.sh~
 *.sh.bak
 *.sh.save
 *.sh.swp
@@ -47,4 +47,3 @@ Thumbs.db
 *.pyo
 __pycache__/
 *.class
-

@@ -56,4 +56,3 @@ case "$1" in
     --dec) change_brightness "-$step" ;;
     *)     get_brightness ;;
 esac
-

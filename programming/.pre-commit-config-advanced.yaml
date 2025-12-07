@@ -667,7 +667,7 @@ repos:
 # ==========================================
 # CONFIGURATION NOTES
 # ==========================================
-# 
+#
 # Additional configuration files you should create:
 #
 # 1. .markdownlint.json - Markdown linting rules
@@ -684,7 +684,7 @@ repos:
 # line-length = 100
 # select = ["E", "W", "F", "I", "N", "D", "UP", "B", "C4", "SIM", "PIE"]
 # ignore = ["D100", "D104", "D107"]
-# 
+#
 # [tool.mypy]
 # python_version = "3.9"
 # strict = true

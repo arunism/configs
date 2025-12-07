@@ -1,102 +1,78 @@
-# Packages for SDDM and its dependencies
-sddm=(
-  qt6-declarative 
-  qt6-svg
-  qt6-virtualkeyboard
-  qt6-multimedia-ffmpeg
-  sddm
-)
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Login managers to disable if found
-login=(
-  lightdm 
-  gdm3 
-  gdm 
-  lxdm 
-  lxdm-gtk3
-  display-manager
-)
+# ---------- CONSTANTS ----------
+readonly THEME_NAME="sddm-aconfig-theme"
+readonly THEMES_DIR="/usr/share/sddm/themes"
+readonly LOCAL_THEME_DIR="$(pwd)/sddm"
+readonly METADATA="$THEMES_DIR/sddm/metadata.desktop"
 
-# Source global functions from an external script
-source "$(dirname "$(readlink -f "$0")")/scripts/global.sh"
+# ---------- LOG HELPERS ----------
+info() { echo -e "\e[32m✅ $*\e[0m"; }
+warn() { echo -e "\e[33m⚠  $*\e[0m"; }
+error(){ echo -e "\e[31m❌ $*\e[0m" >&2; }
 
-# Install required packages
-echo "Installing SDDM and dependencies..."
-for package in "${sddm[@]}"; do
-  install_package "$package"
-done
+# ---------- Install dependencies ----------
+install_deps() {
+    info "Installing dependencies (Arch Linux)..."
+    sudo pacman --needed --noconfirm -S sddm qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg
+    info "Dependencies installed"
+}
 
-# Disable other login managers if installed
-for manager in "${login[@]}"; do
-  if pacman -Qs "$manager" > /dev/null 2>&1; then
-    echo "Disabling $manager..."
-    sudo systemctl disable "$manager.service" --now || true
-  fi
-done
+# ---------- Install theme from local directory ----------
+install_theme() {
+    local src="$LOCAL_THEME_DIR"
+    local dst="$THEMES_DIR/$THEME_NAME"
 
-# Ensure SDDM is enabled
-echo "Enabling SDDM..."
-sudo systemctl enable sddm.service
+    [[ ! -d "$src" ]] && { error "Local theme directory 'sddm' not found next to this script."; exit 1; }
 
-# Check and create Wayland sessions directory if missing
-wayland_sessions_dir="/usr/share/wayland-sessions"
-if [ ! -d "$wayland_sessions_dir" ]; then
-  echo "Creating Wayland sessions directory..."
-  sudo mkdir "$wayland_sessions_dir"
-fi
+    sudo mkdir -p "$dst"
+    sudo cp -r "$src"/* "$dst"/
 
+    # Fonts
+    # [[ -d "$dst/Fonts" ]] && sudo cp -r "$dst/Fonts"/* /usr/share/fonts/
 
-# SDDM Theme Setup
-theme_name="sddm"
+    # SDDM config
+    sudo tee /etc/sddm.conf >/dev/null <<EOF
+[Theme]
+Current=$THEME_NAME
+EOF
 
-# Install and configure the SDDM theme
-echo "Installing SDDM theme..."
+    sudo mkdir -p /etc/sddm.conf.d
+    sudo tee /etc/sddm.conf.d/virtualkbd.conf >/dev/null <<EOF
+[General]
+InputMethod=qtvirtualkeyboard
+EOF
 
-# Remove any existing theme directory
-if [ -d "/usr/share/sddm/themes/$theme_name" ]; then
-  sudo rm -rf "/usr/share/sddm/themes/$theme_name"
-  echo "Removed existing $theme_name theme directory."
-fi
+    info "Theme installed successfully"
+}
 
-# Ensure the themes directory exists
-[ ! -d "/usr/share/sddm/themes" ] && sudo mkdir -p /usr/share/sddm/themes
+# ---------- Choose variant automatically ----------
+set_default_variant() {
+    sudo sed -i "s|^ConfigFile=.*|ConfigFile=theme.conf|" "$METADATA"
+    info "Default theme variant selected: aconfig"
+}
 
-# Move the theme to the system themes directory
-sudo cp -r "$(pwd)/$theme_name" "/usr/share/sddm/themes/$theme_name"
+# ---------- Enable SDDM ----------
+enable_sddm() {
+    sudo systemctl disable display-manager.service 2>/dev/null || true
+    sudo systemctl enable sddm.service
+    info "SDDM enabled — reboot required"
+}
 
-# Configure SDDM to use the new theme
-sddm_conf="/etc/sddm.conf"
-BACKUP_SUFFIX=".bak"
+# ---------- MAIN ----------
+main() {
+    [[ $EUID -eq 0 ]] && { error "Don't run as root"; exit 1; }
 
-echo "Setting up the login screen..."
+    echo -e "\e[36m🚀 Starting full SDDM Theme installation (local mode)\e[0m"
 
-# Backup or create sddm.conf
-if [ -f "$sddm_conf" ]; then
-  sudo cp "$sddm_conf" "$sddm_conf$BACKUP_SUFFIX"
-else
-  sudo touch "$sddm_conf"
-fi
+    install_deps
+    install_theme
+    set_default_variant
+    enable_sddm
 
-# Update or add the [Theme] section
-if grep -q '^\[Theme\]' "$sddm_conf"; then
-  sudo sed -i "/^\[Theme\]/,/^\[/{s/^\s*Current=.*/Current=$theme_name/}" "$sddm_conf"
-else
-  echo -e "\n[Theme]\nCurrent=$theme_name" | sudo tee -a "$sddm_conf" > /dev/null
-fi
+    info "🎉 Installation complete!"
+    warn "Please reboot to apply the theme."
+}
 
-# Add [General] section with InputMethod
-if ! grep -q '^\[General\]' "$sddm_conf"; then
-  echo -e "\n[General]\nInputMethod=qtvirtualkeyboard" | sudo tee -a "$sddm_conf" > /dev/null
-else
-  sudo sed -i '/^\[General\]/,/^\[/{s/^\s*InputMethod=.*/InputMethod=qtvirtualkeyboard/}' "$sddm_conf"
-fi
-
-# Update the background image
-# sudo cp -r assets/sddm.png "/usr/share/sddm/themes/$theme_name/Backgrounds/default"
-# sudo sed -i 's|^wallpaper=".*"|wallpaper="Backgrounds/default"|' "/usr/share/sddm/themes/$theme_name/theme.conf"
-
-echo "Theme $theme_name installed successfully."
-
-# Print two blank lines for readability
-printf "\n%.0s" {1..2}
-
+main

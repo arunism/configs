@@ -119,4 +119,3 @@ case "$1" in
     --mic-dec)       dec_mic_volume ;;
     *)               get_volume ;;
 esac
-

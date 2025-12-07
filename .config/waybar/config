@@ -47,9 +47,9 @@
 	"group/laptop",
 	"custom/separator#blank",
 	"group/mobo_drawer",
-	"custom/separator#blank",  
+	"custom/separator#blank",
 	"group/audio",
-	"custom/separator#blank", 
+	"custom/separator#blank",
 	"group/status",
 	],
 }
