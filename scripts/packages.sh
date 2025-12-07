@@ -4,6 +4,7 @@ package_list=(
   curl
   gvfs
   gvfs-mtp
+  hypridle
   hyprpaper
   hyprpolkitagent
   imagemagick

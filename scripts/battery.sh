@@ -19,8 +19,8 @@ done
 # Create battery monitoring script
 echo "Creating battery monitoring script..."
 
-BATTERY_SCRIPT="$HOME/.config/hypr/scripts/battery-monitor.sh"
-mkdir -p "$HOME/.config/hypr/scripts"
+BATTERY_SCRIPT="$HOME/.config/scripts/battery-monitor.sh"
+mkdir -p "$HOME/.config/scripts"
 
 cat > "$BATTERY_SCRIPT" << 'EOF'
 #!/bin/bash

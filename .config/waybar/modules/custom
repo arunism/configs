@@ -5,8 +5,8 @@
 	"format-alt-click": "click",
 	"interval": 3600,
 	"return-type": "json",
-	"exec": "$HOME/.config/hypr/UserScripts/Weather.py",
-	//"exec": "$HOME/.config/hypr/UserScripts/Weather.sh",
+	"exec": "$HOME/.config/scripts/weather.py",
+	//"exec": "$HOME/.config/scripts/weather.sh",
 	//"exec-if": "ping wttr.in -c1",
 	"tooltip": true,
 },
@@ -20,14 +20,14 @@
 
 "custom/file_manager": {
 	"format": " ",
-	"on-click": "$HOME/.config/hypr/scripts/WaybarScripts.sh --files",
+	"on-click": "$HOME/.config/scripts/waybar.sh --files",
 	"tooltip": true,
 	"tooltip-format": "File Manager",
 },
 
 "custom/tty": {
 	"format": " ",
-	"on-click": "$HOME/.config/hypr/scripts/WaybarScripts.sh --term",
+	"on-click": "$HOME/.config/scripts/waybar.sh --term",
 	"tooltip": true,
 	"tooltip-format": "Launch Terminal",
 },
@@ -41,7 +41,7 @@
 
 "custom/settings": {
 	"format": " ",
-	"on-click": "$HOME/.config/hypr/scripts/Kool_Quick_Settings.sh",
+	"on-click": "$HOME/.config/scripts/settings.sh",
 	"tooltip": true,
 	"tooltip-format": "Launch KooL Hyprland Settings Menu",
 },
@@ -65,7 +65,7 @@
 
 "custom/dot_update": {
 	"format": " 󰁈 ",
-	"on-click": "$HOME/.config/hypr/scripts/KooLsDotsUpdate.sh",
+	"on-click": "$HOME/.config/hypr/scripts/dotsupdate.sh",
 	"tooltip": true,
 	"tooltip-format": "Check KooL Dots update\nIf available",
 },
@@ -77,8 +77,8 @@
 	"escape": true,
 	"exec-on-event": true,
 	"interval": 60,
-	"exec": "$HOME/.config/hypr/scripts/Hypridle.sh status",
-	"on-click": "$HOME/.config/hypr/scripts/Hypridle.sh toggle",
+	"exec": "$HOME/.config/scripts/hypridle.sh status",
+	"on-click": "$HOME/.config/scripts/hypridle.sh toggle",
 	"on-click-right": "hyprlock"
 },
 
@@ -89,18 +89,9 @@
 	"on-click": "$HOME/.config/hypr/scripts/SwitchKeyboardLayout.sh",
 },
 
-"custom/light_dark": {
-	"format": "󰔎 ",
-	"on-click": "$HOME/.config/hypr/scripts/DarkLight.sh",
-	"on-click-right": "$HOME/.config/hypr/scripts/WaybarStyles.sh",
-	"on-click-middle": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
-	"tooltip": true,
-	"tooltip-format": "Left Click: Switch Dark-Light Themes\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Styles Menu",
-},
-
 "custom/lock": {
 	"format": "󰌾",
-	"on-click": "$HOME/.config/hypr/scripts/LockScreen.sh",
+	"on-click": "$HOME/.config/scripts/lock.sh",
 	"tooltip": true,
 	"tooltip-format": "󰷛 Screen Lock",
 },
@@ -128,15 +119,15 @@
 	"on-click": "playerctl previous",
 	"on-click-right": "playerctl next",
 	"scroll-step": 5.0,
-	"on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
-	"on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
+	"on-scroll-up": "$HOME/.config/scripts/volume.sh --inc",
+	"on-scroll-down": "$HOME/.config/scripts/volume.sh --dec",
 	"smooth-scrolling-threshold": 1,
 },
     
 "custom/power": {
 	"format": " ⏻ ",
-	"on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
-	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
+	"on-click": "$HOME/.config/scripts/wlogout.sh",
+	"on-click-right": "$HOME/.config/scripts/blur.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",
 },
@@ -183,7 +174,7 @@
 	"exec": "checkupdates | wc -l",
 	"exec-if": "[[ $(checkupdates | wc -l) ]]",
 	"interval": 43200, // (Arch Linux will try to check 12 hrs interval only
-	"on-click": "$HOME/.config/hypr/scripts/Distro_update.sh",
+	"on-click": "$HOME/.config/scripts/update.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Update System\nArch (w/ notification)\nFedora, OpenSuse, Debian/Ubuntu click to update",
 },
