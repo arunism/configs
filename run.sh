@@ -7,6 +7,7 @@ sudo usermod -aG input "$(whoami)"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/scripts"
 
 # Source the all scripts located in the same directory
+source "$SCRIPT_DIR/aur.sh"
 source "$SCRIPT_DIR/packages.sh"
 source "$SCRIPT_DIR/audio.sh"
 source "$SCRIPT_DIR/bluetooth.sh"
