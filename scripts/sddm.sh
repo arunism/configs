@@ -14,6 +14,7 @@ login=(
   gdm 
   lxdm 
   lxdm-gtk3
+  display-manager
 )
 
 # Source global functions from an external script
@@ -29,13 +30,13 @@ done
 for manager in "${login[@]}"; do
   if pacman -Qs "$manager" > /dev/null 2>&1; then
     echo "Disabling $manager..."
-    sudo systemctl disable "$manager.service" --now
+    sudo systemctl disable "$manager.service" --now || true
   fi
 done
 
 # Ensure SDDM is enabled
 echo "Enabling SDDM..."
-sudo systemctl enable sddm
+sudo systemctl enable sddm.service
 
 # Check and create Wayland sessions directory if missing
 wayland_sessions_dir="/usr/share/wayland-sessions"

@@ -20,5 +20,8 @@ source "$SCRIPT_DIR/gtk.sh"
 # Copy all the configurations to system
 cp -r ./.config/* "$HOME/.config/"
 
+# Make all bash scripts executable
+chmod +x "$HOME"/.config/scripts/*.sh
+
 echo -e "\n${OK} System Setup Complete."
 
