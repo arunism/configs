@@ -5,7 +5,7 @@ set -euo pipefail
 readonly THEME_NAME="sddm-aconfig-theme"
 readonly THEMES_DIR="/usr/share/sddm/themes"
 readonly LOCAL_THEME_DIR="$(pwd)/sddm"
-readonly METADATA="$THEMES_DIR/sddm/metadata.desktop"
+readonly METADATA="$THEMES_DIR/$THEME_NAME/metadata.desktop"
 
 # ---------- LOG HELPERS ----------
 info() { echo -e "\e[32m✅ $*\e[0m"; }

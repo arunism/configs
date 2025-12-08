@@ -16,6 +16,7 @@ source "$SCRIPT_DIR/disk.sh"
 source "$SCRIPT_DIR/battery.sh"
 source "$SCRIPT_DIR/zsh.sh"
 source "$SCRIPT_DIR/gtk.sh"
+source "$SCRIPT_DIR/nvidia.sh"
 source "$SCRIPT_DIR/sddm.sh"
 
 # Copy all the configurations to system

@@ -15,8 +15,8 @@ done
 # Create disk monitoring script
 echo "Creating disk space monitoring script..."
 
-DISK_SCRIPT="$HOME/.config/hypr/scripts/disk.sh"
-mkdir -p "$HOME/.config/hypr/scripts"
+DISK_SCRIPT="$HOME/.config/scripts/disk.sh"
+mkdir -p "$HOME/.config/scripts"
 
 cat > "$DISK_SCRIPT" << 'EOF'
 #!/bin/bash

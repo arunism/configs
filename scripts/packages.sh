@@ -47,6 +47,7 @@ package_list=(
   npm
   google-chrome
   python-pip
+  wlr-randr
 )
 
 # Source global functions from an external script
