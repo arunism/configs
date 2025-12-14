@@ -325,7 +325,7 @@ popover.background.magnifier > contents,
 spinner {
   background: none;
   opacity: 0;
-  -gtk-icon-source: -gtk-icontheme('process-working-symbolic');
+  -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
 }
 
 spinner:checked {
@@ -1390,23 +1390,23 @@ menubutton arrow {
 }
 
 menubutton arrow.none {
-  -gtk-icon-source: -gtk-icontheme('open-menu-symbolic');
+  -gtk-icon-source: -gtk-icontheme("open-menu-symbolic");
 }
 
 menubutton arrow.down {
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 menubutton arrow.up {
-  -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
 menubutton arrow.left {
-  -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 }
 
 menubutton arrow.right {
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 }
 
 splitbutton {
@@ -1539,7 +1539,7 @@ splitbutton.opaque > menubutton > button:dir(rtl) {
 }
 
 splitbutton > menubutton > button > arrow.none {
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 buttoncontent {
@@ -1977,7 +1977,7 @@ dropdown > button > box {
 
 dropdown arrow,
 combobox arrow {
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
   min-height: 16px;
   min-width: 16px;
 }
@@ -2497,7 +2497,7 @@ headerbar.selection-mode .selection-menu {
 }
 
 headerbar.selection-mode .selection-menu .arrow {
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 headerbar .selection-mode {
@@ -2537,7 +2537,7 @@ headerbar.default-decoration windowcontrols menubutton {
 
 window.devel headerbar.titlebar {
   background: #0f111a
-      cross-fade(10% -gtk-icontheme('system-run-symbolic'), image(transparent))
+      cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent))
       90% 0/256px 256px no-repeat,
     linear-gradient(to right, transparent 65%, rgba(226, 233, 233, 0.1)),
     linear-gradient(to top, #343434 3px, #393939);
@@ -2545,7 +2545,7 @@ window.devel headerbar.titlebar {
 
 window.devel headerbar.titlebar:backdrop {
   background: #0f111a
-      cross-fade(10% -gtk-icontheme('system-run-symbolic'), image(transparent))
+      cross-fade(10% -gtk-icontheme("system-run-symbolic"), image(transparent))
       90% 0/256px 256px no-repeat,
     image(#0f111a);
   /* background-color would flash */
@@ -2680,13 +2680,13 @@ columnview.view.expander,
 treeview.view.expander {
   min-width: 16px;
   min-height: 16px;
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
   color: rgba(238, 255, 255, 0.7);
 }
 
 columnview.view.expander:dir(rtl),
 treeview.view.expander:dir(rtl) {
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
 }
 
 columnview.view.expander:hover,
@@ -2706,7 +2706,7 @@ treeview.view.expander:selected:hover {
 
 columnview.view.expander:checked,
 treeview.view.expander:checked {
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 columnview.view.expander:disabled,
@@ -2942,11 +2942,11 @@ popover.background modelbutton:disabled {
 }
 
 popover.background modelbutton arrow.left {
-  -gtk-icon-source: -gtk-icontheme('go-previous-symbolic');
+  -gtk-icon-source: -gtk-icontheme("go-previous-symbolic");
 }
 
 popover.background modelbutton arrow.right {
-  -gtk-icon-source: -gtk-icontheme('go-next-symbolic');
+  -gtk-icon-source: -gtk-icontheme("go-next-symbolic");
 }
 
 popover.background label.title {
@@ -3098,13 +3098,13 @@ notebook > header.bottom > tabs > arrow {
 notebook > header.top > tabs > arrow.down,
 notebook > header.bottom > tabs > arrow.down {
   margin-left: 0;
-  -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 }
 
 notebook > header.top > tabs > arrow.up,
 notebook > header.bottom > tabs > arrow.up {
   margin-right: 0;
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 }
 
 notebook > header.left > tabs > arrow {
@@ -3124,13 +3124,13 @@ notebook > header.right > tabs > arrow {
 notebook > header.left > tabs > arrow.down,
 notebook > header.right > tabs > arrow.down {
   margin-top: 0;
-  -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
 notebook > header.left > tabs > arrow.up,
 notebook > header.right > tabs > arrow.up {
   margin-bottom: 0;
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 notebook > header > tabs > arrow {
@@ -3503,19 +3503,19 @@ scrollbar button {
 }
 
 scrollbar.vertical button.down {
-  -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 scrollbar.vertical button.up {
-  -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
 }
 
 scrollbar.horizontal button.down {
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 }
 
 scrollbar.horizontal button.up {
-  -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
 }
 
 /**********
@@ -3754,23 +3754,23 @@ popover.menu radio:dir(rtl) {
 
 check:checked {
   -gtk-icon-source: -gtk-scaled(
-    -gtk-recolor(url('assets/scalable/check-symbolic.svg')),
-    -gtk-recolor(url('assets/scalable/check-symbolic@2.svg'))
+    -gtk-recolor(url("assets/scalable/check-symbolic.svg")),
+    -gtk-recolor(url("assets/scalable/check-symbolic@2.svg"))
   );
 }
 
 radio:checked {
   -gtk-icon-source: -gtk-scaled(
-    -gtk-recolor(url('assets/scalable/dot-symbolic.svg')),
-    -gtk-recolor(url('assets/scalable/dot-symbolic@2.svg'))
+    -gtk-recolor(url("assets/scalable/dot-symbolic.svg")),
+    -gtk-recolor(url("assets/scalable/dot-symbolic@2.svg"))
   );
 }
 
 check:indeterminate,
 radio:indeterminate {
   -gtk-icon-source: -gtk-scaled(
-    -gtk-recolor(url('assets/scalable/line-symbolic.svg')),
-    -gtk-recolor(url('assets/scalable/line-symbolic@2.svg'))
+    -gtk-recolor(url("assets/scalable/line-symbolic.svg")),
+    -gtk-recolor(url("assets/scalable/line-symbolic@2.svg"))
   );
 }
 
@@ -3802,8 +3802,8 @@ checkbutton.theme-selector radio:active:hover {
   background-color: #e2e9e9;
   color: rgba(0, 0, 0, 0.87);
   -gtk-icon-source: -gtk-scaled(
-    -gtk-recolor(url('assets/scalable/check-symbolic.svg')),
-    -gtk-recolor(url('assets/scalable/check-symbolic@2.svg'))
+    -gtk-recolor(url("assets/scalable/check-symbolic.svg")),
+    -gtk-recolor(url("assets/scalable/check-symbolic@2.svg"))
   );
 }
 
@@ -3826,8 +3826,8 @@ themeswitcher .check {
   margin: 3px;
   -gtk-icon-size: 20px;
   -gtk-icon-source: -gtk-scaled(
-    -gtk-recolor(url('assets/scalable/check-symbolic.svg')),
-    -gtk-recolor(url('assets/scalable/check-symbolic@2.svg'))
+    -gtk-recolor(url("assets/scalable/check-symbolic.svg")),
+    -gtk-recolor(url("assets/scalable/check-symbolic@2.svg"))
   );
 }
 
@@ -4079,22 +4079,22 @@ scale.horizontal.marks-before:not(.marks-after) slider:active {
 
 scale.horizontal.marks-before:not(.marks-after) slider {
   background-image: -gtk-scaled(
-    url('assets/scale-horz-marks-before-slider-dark.png'),
-    url('assets/scale-horz-marks-before-slider-dark@2.png')
+    url("assets/scale-horz-marks-before-slider-dark.png"),
+    url("assets/scale-horz-marks-before-slider-dark@2.png")
   );
 }
 
 scale.horizontal.marks-before:not(.marks-after) slider:disabled {
   background-image: -gtk-scaled(
-    url('assets/scale-horz-marks-before-slider-disabled-dark.png'),
-    url('assets/scale-horz-marks-before-slider-disabled-dark@2.png')
+    url("assets/scale-horz-marks-before-slider-disabled-dark.png"),
+    url("assets/scale-horz-marks-before-slider-disabled-dark@2.png")
   );
 }
 
 scale.horizontal.marks-before:not(.marks-after) slider:active {
   background-image: -gtk-scaled(
-    url('assets/scale-horz-marks-before-slider-dark.png'),
-    url('assets/scale-horz-marks-before-slider-dark@2.png')
+    url("assets/scale-horz-marks-before-slider-dark.png"),
+    url("assets/scale-horz-marks-before-slider-dark@2.png")
   );
 }
 
@@ -4138,22 +4138,22 @@ scale.horizontal.marks-after:not(.marks-before) slider:active {
 
 scale.horizontal.marks-after:not(.marks-before) slider {
   background-image: -gtk-scaled(
-    url('assets/scale-horz-marks-after-slider-dark.png'),
-    url('assets/scale-horz-marks-after-slider-dark@2.png')
+    url("assets/scale-horz-marks-after-slider-dark.png"),
+    url("assets/scale-horz-marks-after-slider-dark@2.png")
   );
 }
 
 scale.horizontal.marks-after:not(.marks-before) slider:disabled {
   background-image: -gtk-scaled(
-    url('assets/scale-horz-marks-after-slider-disabled-dark.png'),
-    url('assets/scale-horz-marks-after-slider-disabled-dark@2.png')
+    url("assets/scale-horz-marks-after-slider-disabled-dark.png"),
+    url("assets/scale-horz-marks-after-slider-disabled-dark@2.png")
   );
 }
 
 scale.horizontal.marks-after:not(.marks-before) slider:active {
   background-image: -gtk-scaled(
-    url('assets/scale-horz-marks-after-slider-dark.png'),
-    url('assets/scale-horz-marks-after-slider-dark@2.png')
+    url("assets/scale-horz-marks-after-slider-dark.png"),
+    url("assets/scale-horz-marks-after-slider-dark@2.png")
   );
 }
 
@@ -4197,22 +4197,22 @@ scale.vertical.marks-before:not(.marks-after) slider:active {
 
 scale.vertical.marks-before:not(.marks-after) slider {
   background-image: -gtk-scaled(
-    url('assets/scale-vert-marks-before-slider-dark.png'),
-    url('assets/scale-vert-marks-before-slider-dark@2.png')
+    url("assets/scale-vert-marks-before-slider-dark.png"),
+    url("assets/scale-vert-marks-before-slider-dark@2.png")
   );
 }
 
 scale.vertical.marks-before:not(.marks-after) slider:disabled {
   background-image: -gtk-scaled(
-    url('assets/scale-vert-marks-before-slider-disabled-dark.png'),
-    url('assets/scale-vert-marks-before-slider-disabled-dark@2.png')
+    url("assets/scale-vert-marks-before-slider-disabled-dark.png"),
+    url("assets/scale-vert-marks-before-slider-disabled-dark@2.png")
   );
 }
 
 scale.vertical.marks-before:not(.marks-after) slider:active {
   background-image: -gtk-scaled(
-    url('assets/scale-vert-marks-before-slider-dark.png'),
-    url('assets/scale-vert-marks-before-slider-dark@2.png')
+    url("assets/scale-vert-marks-before-slider-dark.png"),
+    url("assets/scale-vert-marks-before-slider-dark@2.png")
   );
 }
 
@@ -4256,22 +4256,22 @@ scale.vertical.marks-after:not(.marks-before) slider:active {
 
 scale.vertical.marks-after:not(.marks-before) slider {
   background-image: -gtk-scaled(
-    url('assets/scale-vert-marks-after-slider-dark.png'),
-    url('assets/scale-vert-marks-after-slider-dark@2.png')
+    url("assets/scale-vert-marks-after-slider-dark.png"),
+    url("assets/scale-vert-marks-after-slider-dark@2.png")
   );
 }
 
 scale.vertical.marks-after:not(.marks-before) slider:disabled {
   background-image: -gtk-scaled(
-    url('assets/scale-vert-marks-after-slider-disabled-dark.png'),
-    url('assets/scale-vert-marks-after-slider-disabled-dark@2.png')
+    url("assets/scale-vert-marks-after-slider-disabled-dark.png"),
+    url("assets/scale-vert-marks-after-slider-disabled-dark@2.png")
   );
 }
 
 scale.vertical.marks-after:not(.marks-before) slider:active {
   background-image: -gtk-scaled(
-    url('assets/scale-vert-marks-after-slider-dark.png'),
-    url('assets/scale-vert-marks-after-slider-dark@2.png')
+    url("assets/scale-vert-marks-after-slider-dark.png"),
+    url("assets/scale-vert-marks-after-slider-dark@2.png")
   );
 }
 
@@ -4826,11 +4826,11 @@ expander {
   min-width: 16px;
   min-height: 16px;
   color: rgba(238, 255, 255, 0.7);
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
 }
 
 expander:dir(rtl) {
-  -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
 }
 
 expander:hover,
@@ -5741,7 +5741,7 @@ stacksidebar row:selected,
 cursor-handle {
   color: #e2e9e9;
   -gtk-icon-source: -gtk-recolor(
-    url('assets/scalable/cursor-handle-symbolic.svg')
+    url("assets/scalable/cursor-handle-symbolic.svg")
   );
 }
 

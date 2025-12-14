@@ -22,4 +22,3 @@ gsettings set org.gnome.desktop.interface gtk-theme "Andromeda"
 gsettings set org.gnome.desktop.wm.preferences theme "Andromeda"
 ```
 or Change via distribution specific tool.
-

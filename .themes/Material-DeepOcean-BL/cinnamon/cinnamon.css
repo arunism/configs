@@ -248,12 +248,12 @@ StScrollBar StButton#hhandle:active {
 
 .check-box StBin,
 .check-box:focus StBin {
-  background-image: url('assets/checkbox-off.svg');
+  background-image: url("assets/checkbox-off.svg");
 }
 
 .check-box:checked StBin,
 .check-box:focus:checked StBin {
-  background-image: url('assets/checkbox-dark.svg');
+  background-image: url("assets/checkbox-dark.svg");
 }
 
 .radiobutton CinnamonGenericContainer {
@@ -275,31 +275,31 @@ StScrollBar StButton#hhandle:active {
 
 .radiobutton StBin,
 .radiobutton:focus StBin {
-  background-image: url('assets/radiobutton-off.svg');
+  background-image: url("assets/radiobutton-off.svg");
 }
 
 .radiobutton:checked StBin,
 .radiobutton:focus:checked StBin {
-  background-image: url('assets/radiobutton-dark.svg');
+  background-image: url("assets/radiobutton-dark.svg");
 }
 
 .toggle-switch {
   width: 40px;
   height: 20px;
   background-size: contain;
-  background-image: url('assets/toggle-off.svg');
+  background-image: url("assets/toggle-off.svg");
 }
 
 .toggle-switch:checked {
-  background-image: url('assets/toggle-on-dark.svg');
+  background-image: url("assets/toggle-on-dark.svg");
 }
 
 .popup-menu-item:active .toggle-switch {
-  background-image: url('assets/toggle-off.svg');
+  background-image: url("assets/toggle-off.svg");
 }
 
 .popup-menu-item:active .toggle-switch:checked {
-  background-image: url('assets/toggle-on-dark.svg');
+  background-image: url("assets/toggle-on-dark.svg");
 }
 
 .cinnamon-link {
@@ -692,19 +692,19 @@ StScrollBar StButton#hhandle:active {
 }
 
 .workspace-add-button {
-  background-image: url('assets/add-workspace.svg');
+  background-image: url("assets/add-workspace.svg");
   height: 200px;
   width: 35px;
   transition-duration: 100;
 }
 
 .workspace-add-button:hover {
-  background-image: url('assets/add-workspace-hover.svg');
+  background-image: url("assets/add-workspace-hover.svg");
   transition-duration: 100;
 }
 
 .workspace-add-button:active {
-  background-image: url('assets/add-workspace-active.svg');
+  background-image: url("assets/add-workspace-active.svg");
   transition-duration: 100;
 }
 
@@ -714,7 +714,7 @@ StScrollBar StButton#hhandle:active {
 
 .workspace-close-button,
 .window-close {
-  background-image: url('assets/close.svg');
+  background-image: url("assets/close.svg");
   background-size: 26px;
   height: 26px;
   width: 26px;
@@ -723,7 +723,7 @@ StScrollBar StButton#hhandle:active {
 
 .workspace-close-button:hover,
 .window-close:hover {
-  background-image: url('assets/close-hover.svg');
+  background-image: url("assets/close-hover.svg");
   background-size: 26px;
   height: 26px;
   width: 26px;
@@ -731,7 +731,7 @@ StScrollBar StButton#hhandle:active {
 
 .workspace-close-button:active,
 .window-close:active {
-  background-image: url('assets/close-active.svg');
+  background-image: url("assets/close-active.svg");
   background-size: 26px;
   height: 26px;
   width: 26px;
@@ -747,7 +747,7 @@ StScrollBar StButton#hhandle:active {
 }
 
 .window-close-area {
-  background-image: url('assets/trash-icon.svg');
+  background-image: url("assets/trash-icon.svg");
   height: 120px;
   width: 400px;
 }
@@ -834,19 +834,19 @@ StScrollBar StButton#hhandle:active {
 }
 
 .calendar-change-month-back {
-  background-image: url('assets/calendar-arrow-left.svg');
+  background-image: url("assets/calendar-arrow-left.svg");
 }
 
 .calendar-change-month-back:rtl {
-  background-image: url('assets/calendar-arrow-right.svg');
+  background-image: url("assets/calendar-arrow-right.svg");
 }
 
 .calendar-change-month-forward {
-  background-image: url('assets/calendar-arrow-right.svg');
+  background-image: url("assets/calendar-arrow-right.svg");
 }
 
 .calendar-change-month-forward:rtl {
-  background-image: url('assets/calendar-arrow-left.svg');
+  background-image: url("assets/calendar-arrow-left.svg");
 }
 
 .datemenu-date-label {
@@ -1092,7 +1092,7 @@ StScrollBar StButton#hhandle:active {
 .ripple-box {
   width: 104px;
   height: 104px;
-  background-image: url('assets/corner-ripple.svg');
+  background-image: url("assets/corner-ripple.svg");
   background-size: contain;
 }
 

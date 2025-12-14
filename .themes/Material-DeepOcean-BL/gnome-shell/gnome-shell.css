@@ -65,7 +65,7 @@
 /* App Icons */
 .show-apps .show-apps-icon {
   color: transparent;
-  background-image: url('assets/applogo.svg');
+  background-image: url("assets/applogo.svg");
   background-size: contain;
   border-radius: 6px;
   padding: 2px 4px;
@@ -615,7 +615,7 @@ StWidget.focused .app-well-app-running-dot {
   border-radius: 9999px;
   color: rgba(238, 255, 255, 0.7);
   border: none;
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
 }
 
 .calendar .calendar-day-base:hover,
@@ -686,7 +686,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .calendar .calendar-day-with-events {
   color: rgba(238, 255, 255, 0.7);
-  background-image: url('assets/calendar-today.svg');
+  background-image: url("assets/calendar-today.svg");
 }
 
 .calendar .calendar-day-with-events.calendar-work-day {
@@ -736,7 +736,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .events-button .event-time {
   color: rgba(238, 255, 255, 0.5);
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
   font-size: 10pt;
 }
 
@@ -748,7 +748,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .world-clocks-button .world-clocks-time {
   color: rgba(238, 255, 255, 0.5);
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
   font-size: 11pt;
 }
 
@@ -762,7 +762,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .world-clocks-button .world-clocks-timezone {
   color: rgba(238, 255, 255, 0.5);
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
   font-size: 10pt;
 }
 
@@ -802,7 +802,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .weather-button .weather-forecast-time {
   color: rgba(238, 255, 255, 0.7);
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
   font-size: 9pt;
   font-weight: normal;
   padding-top: 0.2em;
@@ -831,7 +831,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .check-box StBin,
 .check-box:focus StBin {
-  background-image: url('assets/checkbox-off.svg');
+  background-image: url("assets/checkbox-off.svg");
 }
 
 .check-box:hover StBin {
@@ -844,7 +844,7 @@ StWidget.focused .app-well-app-running-dot {
 
 .check-box:checked StBin,
 .check-box:focus:checked StBin {
-  background-image: url('assets/checkbox-dark.svg');
+  background-image: url("assets/checkbox-dark.svg");
 }
 
 /* Activities Ripple */
@@ -1122,7 +1122,7 @@ StWidget.focused .app-well-app-running-dot {
 }
 
 .welcome-dialog-image {
-  background-image: url('resource:///org/gnome/shell/theme/gnome-shell-start.svg');
+  background-image: url("resource:///org/gnome/shell/theme/gnome-shell-start.svg");
   background-size: contain;
   height: 300px;
   width: 300px;
@@ -2377,7 +2377,7 @@ StEntry StLabel.hint-text,
   font-weight: bold;
   height: 32px;
   color: rgba(238, 255, 255, 0.7);
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
   transition-duration: 250ms;
   font-size: 10pt;
 }
@@ -3072,7 +3072,7 @@ StEntry StLabel.hint-text,
 .unlock-dialog-clock-time {
   font-size: 64pt;
   padding-top: 42px;
-  font-feature-settings: 'tnum';
+  font-feature-settings: "tnum";
 }
 
 .unlock-dialog-clock-date {
@@ -3509,19 +3509,19 @@ StScrollBar StButton#hhandle:active {
   width: 40px;
   height: 20px;
   background-size: contain;
-  background-image: url('assets/toggle-off-dark.svg');
+  background-image: url("assets/toggle-off-dark.svg");
 }
 
 .toggle-switch:checked {
-  background-image: url('assets/toggle-on-dark.svg');
+  background-image: url("assets/toggle-on-dark.svg");
 }
 
 .popup-sub-menu .toggle-switch {
-  background-image: url('assets/toggle-off.svg');
+  background-image: url("assets/toggle-off.svg");
 }
 
 .popup-sub-menu .toggle-switch:checked {
-  background-image: url('assets/toggle-on.svg');
+  background-image: url("assets/toggle-on.svg");
 }
 
 /* Tiled window previews */
@@ -4087,7 +4087,7 @@ StScrollBar StButton#hhandle:active {
 }
 
 .workspace-thumbnails .placeholder {
-  background-image: url('assets/dash-placeholder.svg');
+  background-image: url("assets/dash-placeholder.svg");
   background-size: contain;
   width: 18px;
   height: 24px;
