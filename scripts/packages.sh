@@ -8,6 +8,7 @@ package_list=(
   hypridle
   hyprlock
   hyprpaper
+  hyprshot
   hyprpolkitagent
   imagemagick
   kitty
@@ -48,6 +49,7 @@ package_list=(
   google-chrome
   python-pip
   wlr-randr
+  xdg-desktop-portal xdg-desktop-portal-hyprland
 )
 
 # Source global functions from an external script
