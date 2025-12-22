@@ -13,7 +13,7 @@ return function()
 				"--smart-case",
 			},
       border = true,
-      winblend = 40,
+      winblend = 20,
 			initial_mode = "insert",
 			prompt_prefix = " " .. icons.ui.Telescope .. " ",
 			selection_caret = icons.ui.ChevronRight,
