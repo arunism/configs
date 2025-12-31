@@ -50,6 +50,8 @@ package_list=(
   python-pip
   wlr-randr
   xdg-desktop-portal xdg-desktop-portal-hyprland
+  ffmpeg
+  vlc
 )
 
 # Source global functions from an external script
