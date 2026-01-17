@@ -5,6 +5,7 @@ package_list=(
   curl
   gvfs
   gvfs-mtp
+  hyprland
   hypridle
   hyprlock
   hyprpaper
