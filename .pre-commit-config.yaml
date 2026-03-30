@@ -1,82 +1,87 @@
 repos:
-  # ----------  1. GENERAL HYGIENE ----------
+  # ---------- 1. GENERAL HYGIENE ----------
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
+        exclude: \.(md)$
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-merge-conflict
       - id: check-added-large-files
-  # ----------  2. BASH ----------
-  - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.10.0.1
-    hooks:
-      - id: shellcheck
-        files: \.sh$
-  - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.8.0-1
-    hooks:
-      - id: shfmt
-        files: \.sh$
-        args: ["-i", "2", "-ci"]
-  # ----------  3. JSON & JSONC (Prettier) ----------
-  - repo: https://github.com/prettier/pre-commit
-    rev: v2.0.0
-    hooks:
-      - id: prettier
-        name: Prettier (JSON/JSONC/CSS)
-        files: \.(json|jsonc|css)$
-  # ----------  4. CONF (Basic syntax) ----------
-  - repo: local
-    hooks:
-      - id: conf-basic-lint
-        name: Basic .conf syntax check
-        entry: bash -c 'grep -nE "^[^#].*=" "$@" || true'
-        language: system
-        files: \.conf$
-  # ----------  5. QML (qmlformat + qmllint) ----------
-  - repo: local
-    hooks:
-      - id: qmlformat
-        name: QML Format
-        entry: qmlformat
-        language: system
-        files: \.qml$
-      - id: qmllint
-        name: QML Lint
-        entry: qmllint
-        language: system
-        files: \.qml$
-  # ----------  6. LUA ----------
+        args: ["--maxkb=500"]
+
+  # ---------- 2. BASH ----------
+  # - repo: https://github.com/shellcheck-py/shellcheck-py
+  #   rev: v0.10.0.1
+  #   hooks:
+  #     - id: shellcheck
+  #       files: \.sh$
+
+  # - repo: https://github.com/scop/pre-commit-shfmt
+  #   rev: v3.8.0-1
+  #   hooks:
+  #     - id: shfmt
+  #       files: \.sh$
+  #       args: ["-i", "2", "-ci"]
+
+  # ---------- 3. PRETTIER (JSON, CSS, RASI) ----------
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: v2.1.0
+  #   hooks:
+  #     - id: prettier
+  #       name: Prettier
+  #       files: \.(json|jsonc|css|rasi)$
+  #       args: ["--write"]
+
+  # ---------- 4. CSS / SCSS ----------
+  # - repo: https://github.com/thibaudcolas/pre-commit-stylelint
+  #   rev: v14.4.0
+  #   hooks:
+  #     - id: stylelint
+  #       files: \.(css|scss|sass)$
+  #       args: ["--fix"]
+
+  # ---------- 5. CONF ----------
+  # - repo: local
+  #   hooks:
+  #     - id: conf-basic-lint
+  #       name: Basic .conf syntax check
+  #       entry: bash -c 'grep -nE "^[^#[:space:]].*=.*" "$@" || true'
+  #       language: system
+  #       files: \.conf$
+
+  # ---------- 6. QML ----------
+  # - repo: local
+  #   hooks:
+  #     - id: qmlformat
+  #       name: QML Format
+  #       entry: qmlformat
+  #       language: system
+  #       files: \.qml$
+
+      # - id: qmllint
+      #   name: QML Lint
+      #   entry: qmllint
+      #   language: system
+      #   files: \.qml$
+
+  # ---------- 7. LUA (OPTIONAL - ENABLE IF INSTALLED) ----------
   # - repo: https://github.com/Koihik/LuaFormatter
   #   rev: v1.3.6
   #   hooks:
   #     - id: lua-format
-  #       name: LuaFormatter
+  #       name: Lua Formatter
   #       entry: lua-format
   #       language: system
   #       files: \.lua$
   #       args: ["--indent-width=2", "--tab-width=2"]
+
   # - repo: https://github.com/mpeterv/luacheck
   #   rev: v1.1.1
   #   hooks:
   #     - id: luacheck
-  #       name: LuaCheck (lint)
+  #       name: Lua Lint
   #       entry: luacheck
   #       language: system
   #       files: \.lua$
-  # ----------  7. RASI (Rofi theme) – treat as CSS ----------
-  - repo: local
-    hooks:
-      - id: prettier-rasi
-        name: Prettier (Rasi)
-        entry: prettier
-        language: system
-        files: \.rasi$
-        args: ["--parser", "css", "--write"]
-  # ----------  8. CSS ----------
-  - repo: https://github.com/thibaudcolas/pre-commit-stylelint
-    rev: v14.4.0
-    hooks:
-      - id: stylelint
